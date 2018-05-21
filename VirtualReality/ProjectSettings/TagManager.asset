@@ -9,6 +9,7 @@ TagManager:
   - Button
   - SubtitlePanel
   - SubtitleManager
+  - ScoreManager
   layers:
   - Default
   - TransparentFX

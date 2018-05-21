@@ -171,6 +171,7 @@
      <Compile Include="Assets\External Assets\ResonanceAudio\Scripts\ResonanceAudioSource.cs" />
      <Compile Include="Assets\FontScaleManager.cs" />
      <Compile Include="Assets\FontScaler.cs" />
+     <Compile Include="Assets\ScoreManager.cs" />
      <Compile Include="Assets\Scripts\AccessibilityForUI.cs" />
      <Compile Include="Assets\Scripts\AlternativeText.cs" />
      <Compile Include="Assets\Scripts\AudioController.cs" />
@@ -195,6 +196,7 @@
      <Compile Include="Assets\Scripts\ThrowingAxeProjectile.cs" />
      <Compile Include="Assets\Scripts\VibrateOnTap.cs" />
      <Compile Include="Assets\Scripts\VibrationToggler.cs" />
+     <Compile Include="Assets\TimerManager.cs" />
      <None Include="Assets\External Assets\LowPolyWater_Pack\LowPoly Island\Credits.txt" />
      <None Include="Assets\External Assets\GoogleVR\Shaders\GvrUIOverlayFont.shader" />
      <None Include="Assets\External Assets\LowPolyWater_Pack\Shaders\WaterShaded.shader" />

@@ -32,9 +32,12 @@ public class EnemySpawnerScript : MonoBehaviour
     public float maxHeight = 8f;
     // Use this for initialization
 
+    // Reference to the scoreManager. Will be passed to created entities.
+    public ScoreManager scoreManager;
     // begin the spawn loop.
     void Start()
     {
+        this.scoreManager = GameObject.FindGameObjectWithTag("ScoreManager").GetComponent<ScoreManager>();
         StartCoroutine(spawnLoop());
     }
 
@@ -84,6 +87,7 @@ public class EnemySpawnerScript : MonoBehaviour
         TargetScript ts = spawnedObject.GetComponent<TargetScript>();
         if (ts != null)
         {
+            ts.scoreManager = this.scoreManager;
             ts.player = this.player.transform;
             float halfAngle = (lowerAngle + higherAngle) / 2f;
             //first sector. lerp from A0 (lower angle) to A1 (higher angle) (A0 -> min height, A1 -> max height);

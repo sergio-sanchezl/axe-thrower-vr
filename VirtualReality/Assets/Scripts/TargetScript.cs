@@ -13,7 +13,11 @@ public class TargetScript : MonoBehaviour, IDamageable
 
     public Transform player;
 
+    public int points;
+    public ScoreManager scoreManager;
     AudioController audioController;
+
+    bool alreadyGavePoints = false;
     // Use this for initialization
     void Start()
     {
@@ -47,6 +51,13 @@ public class TargetScript : MonoBehaviour, IDamageable
 
     public void DealDamage(float damage)
     {
-        Destroy(this.gameObject);
+        if(!alreadyGavePoints) {
+            scoreManager.AddPoints(this.points);
+            this.alreadyGavePoints = true;
+            Destroy(this.gameObject);
+        } else {
+            // Debug.Log("TRYING TO GIVE POINTS WHEN ALREADYGAVEPOINTS IS TRUE");
+        }
+        
     }
 }
