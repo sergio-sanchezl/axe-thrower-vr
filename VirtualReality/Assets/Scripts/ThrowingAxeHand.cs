@@ -21,6 +21,10 @@ public class ThrowingAxeHand : MonoBehaviour
     private Vector3 backAxePosition;
 
     public float animationTime = 0.12f;
+
+    public float fireRateMultiplier = 1f;
+
+    public Coroutine showAxeDelayCoroutine;
     void Start()
     {
         this.initialAxePosition = this.axeInHand.transform.localPosition;
@@ -49,7 +53,7 @@ public class ThrowingAxeHand : MonoBehaviour
         float currentTime = Time.time;
         Debug.Log("PreviouslyFiredTime: " + previouslyFiredTime);
         Debug.Log("CurrentTime: " + currentTime);
-        if (Mathf.Abs(currentTime - previouslyFiredTime) >= fireRate)
+        if (Mathf.Abs(currentTime - previouslyFiredTime) >= fireRate / this.fireRateMultiplier)
         {
             return true;
         }
@@ -63,7 +67,8 @@ public class ThrowingAxeHand : MonoBehaviour
         float currentTime = Time.time;
         this.previouslyFiredTime = currentTime;
         HideAxe();
-        StartCoroutine(DelayCodeExecution(fireRate, (int i) => {
+        this.showAxeDelayCoroutine = StartCoroutine(DelayCodeExecution(fireRate / this.fireRateMultiplier, (int i) =>
+        {
             ShowAxe();
         }));
         Debug.Log("Shooooootiiiing!!!!");
@@ -100,11 +105,53 @@ public class ThrowingAxeHand : MonoBehaviour
         yield return null;
     }
 
-    IEnumerator DelayCodeExecution(float time, System.Action<int> callBack) {
+    IEnumerator DelayCodeExecution(float time, System.Action<int> callBack)
+    {
         Debug.Log("DelayCodeExecution before waiting.");
         yield return new WaitForSecondsRealtime(time);
         Debug.Log("DelayCodeExecution after waiting.");
         callBack(1);
         yield return null;
+    }
+
+    public void SetFireRateMultiplier(float multiplier)
+    {
+        // The multiplier before applying any changes.
+        float previousMultiplier = this.fireRateMultiplier;
+        // The new multiplier is applied.
+        this.fireRateMultiplier = multiplier;
+        // some checks here, to check if when changing the multiplier the 
+        // weapon should be already seen, or recalculate the time to make it appear again.
+
+        // The time when the multiplier changed (i.e. right now)
+        float timeFireRateMultiplierChanged = Time.time;
+
+        // When should the axe appear, maybe this happened in the past. in that case,
+        // show the axe right now.
+        float newTimeToShowAxe = this.previouslyFiredTime + (this.fireRate / multiplier);
+
+        // When was the axe scheduled to reappear.
+        float previousTimeToShowAxe = this.previouslyFiredTime + (this.fireRate / previousMultiplier);
+        if (timeFireRateMultiplierChanged >= newTimeToShowAxe && timeFireRateMultiplierChanged < previousTimeToShowAxe)
+        {
+            // If we must show the axe but it hasn't been shown yet, then show it.
+            // Cancel the coroutine and show the axe immediately.
+            StopCoroutine(this.showAxeDelayCoroutine);
+            ShowAxe();
+        }
+        else
+        {
+            if (timeFireRateMultiplierChanged < newTimeToShowAxe)
+            {
+                // If we don't have to show the axe yet but we have to reschedule the show time, do so.
+                StopCoroutine(this.showAxeDelayCoroutine);
+                // Schedule the ShowAxe at the proper time, taking into account
+                // the time that the axe has been hidden and the new time.
+                this.showAxeDelayCoroutine = StartCoroutine(DelayCodeExecution(newTimeToShowAxe - timeFireRateMultiplierChanged, (int i) =>
+                {
+                    ShowAxe();
+                }));
+            }
+        }
     }
 }
