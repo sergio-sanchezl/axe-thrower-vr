@@ -18,25 +18,15 @@ public class BonusManager : MonoBehaviour
 
     int extraSeconds = 30;
     int extraPoints = 15;
-    public AnimationCurve cumulativeProbability;
-    // Use this for initialization
-    void Start()
+
+    public void ExecuteRandomBonus()
     {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-    void RandomizeBonus()
-    {
-        int randomNumber = Random.Range(1, 4);
+        // 1 inclusive, 5 exclusive. i.e. -> will yield 1, 2, 3 or 4.
+        int randomNumber = Random.Range(1, 5);
         switch (randomNumber)
         {
             case 1:
+                Debug.Log("111 - Double fire rate!");
                 // try to stop the coroutine (if it is null, don't try, that'll be a null exception).
                 if (this.doubleFireRateCoroutine != null)
                 {
@@ -46,6 +36,7 @@ public class BonusManager : MonoBehaviour
                 this.doubleFireRateCoroutine = StartCoroutine(DoubleFireRateCoroutine());
                 break;
             case 2:
+                Debug.Log("222 - Double points gain!");
                 // try to stop the coroutine (if it is null, don't try, that'll be a null exception).
                 if (this.doublePointsCoroutine != null)
                 {
@@ -55,11 +46,13 @@ public class BonusManager : MonoBehaviour
                 this.doublePointsCoroutine = StartCoroutine(DoublePointsCoroutine());
                 break;
             case 3:
-                // 
+                Debug.Log("333 - Extra points!");
+                // extra points bonus.
 				AddExtraPoints();
                 break;
             case 4:
-                // 
+                Debug.Log("444 - Extra time!");
+                // extra time bonus.
 				AddExtraTime();
                 break;
             default:
@@ -70,7 +63,7 @@ public class BonusManager : MonoBehaviour
 
     IEnumerator DoubleFireRateCoroutine()
     {
-		weapon.SetFireRateMultiplier(2f);
+		weapon.SetFireRateMultiplier(4f);
 		yield return new WaitForSeconds(this.doubleFireRateDuration);
 		weapon.SetFireRateMultiplier(1f);
     }

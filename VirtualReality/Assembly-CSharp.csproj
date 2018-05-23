@@ -177,6 +177,7 @@
      <Compile Include="Assets\Scripts\AlternativeText.cs" />
      <Compile Include="Assets\Scripts\AudioController.cs" />
      <Compile Include="Assets\Scripts\AudioManager.cs" />
+     <Compile Include="Assets\Scripts\BonusTarget.cs" />
      <Compile Include="Assets\Scripts\CollisionEmitterToParent.cs" />
      <Compile Include="Assets\Scripts\CollisionTester.cs" />
      <Compile Include="Assets\Scripts\EnemySpawnerScript.cs" />
@@ -189,6 +190,7 @@
      <Compile Include="Assets\Scripts\PlayerWeaponScript.cs" />
      <Compile Include="Assets\Scripts\RotateSelf.cs" />
      <Compile Include="Assets\Scripts\SceneSwitcher.cs" />
+     <Compile Include="Assets\Scripts\ScoreTarget.cs" />
      <Compile Include="Assets\Scripts\StaticCallsWrapper.cs" />
      <Compile Include="Assets\Scripts\SubtitleManager.cs" />
      <Compile Include="Assets\Scripts\TargetScript.cs" />

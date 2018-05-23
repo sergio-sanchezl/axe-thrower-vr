@@ -34,6 +34,9 @@ public class EnemySpawnerScript : MonoBehaviour
 
     // Reference to the scoreManager. Will be passed to created entities.
     public ScoreManager scoreManager;
+
+    // Reference to the bonusManager. Will be passed to created entities.
+    public BonusManager bonusManager;
     // begin the spawn loop.
     void Start()
     {
@@ -87,7 +90,15 @@ public class EnemySpawnerScript : MonoBehaviour
         TargetScript ts = spawnedObject.GetComponent<TargetScript>();
         if (ts != null)
         {
-            ts.scoreManager = this.scoreManager;
+            if (ts.GetType() == typeof(ScoreTarget))
+            {
+                ((ScoreTarget)ts).scoreManager = this.scoreManager;
+            }
+            if (ts.GetType() == typeof(BonusTarget))
+            {
+                ((BonusTarget)ts).bonusManager = this.bonusManager;
+            }
+
             ts.player = this.player.transform;
             float halfAngle = (lowerAngle + higherAngle) / 2f;
             //first sector. lerp from A0 (lower angle) to A1 (higher angle) (A0 -> min height, A1 -> max height);

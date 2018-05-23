@@ -1327,36 +1327,6 @@ MonoBehaviour:
   scoreManager: {fileID: 320422217}
   timerManager: {fileID: 1242530739}
   weapon: {fileID: 357327371}
-  cumulativeProbability:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0.25
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 0.2506995
-      value: 0.5
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 0.48757443
-      value: 0.4992224
-      inSlope: -0.0032827542
-      outSlope: 0.977269
-      tangentMode: 69
-    - serializedVersion: 2
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
 --- !u!1 &174277867
 GameObject:
   m_ObjectHideFlags: 0
@@ -1934,10 +1904,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speechEnabled: 0
-  tts: {fileID: 0}
+  tts: {fileID: 584441293}
   points: 0
   pointsMarker: {fileID: 1181650273}
-  pointsMultiplier: 0
+  pointsMultiplier: 1
 --- !u!4 &326040566 stripped
 Transform:
   m_PrefabParentObject: {fileID: 493548, guid: 237fc278131d8dc4c9dd556f706cd958, type: 2}
@@ -2058,7 +2028,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1490c0c1fd629bb45b1634849c9e70f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireRate: 0.5
+  fireRate: 1
   damage: 10
   axeInHand: {fileID: 1850957243}
   throwingAxePrefab: {fileID: 1633130217355372, guid: 58a5857cdfdbe5a469bee6043bcea5b2,
@@ -4757,6 +4727,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114000014150266774, guid: d638298e697ca4e9b91853efadd0e6da,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d638298e697ca4e9b91853efadd0e6da, type: 2}
   m_IsPrefabParent: 0
@@ -7192,6 +7167,14 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 1980163928, guid: 87c35d808850c410ca0e398a8da84e68, type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 632161999, guid: 87c35d808850c410ca0e398a8da84e68, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 87c35d808850c410ca0e398a8da84e68, type: 2}
   m_IsPrefabParent: 0
@@ -7669,7 +7652,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fae67aa3f96a6a40ac2cb4bee78b992, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timerEnd: 3
+  timerEnd: 120
   secondsElapsed: 0
   timerText: {fileID: 2123516758}
   enemySpawner: {fileID: 1580079632}
@@ -10200,11 +10183,13 @@ MonoBehaviour:
   spawnAngle: 180
   timeBetweenSpawns: 2
   objectsToSpawn:
-  - {fileID: 1571149618494326, guid: c2e01d2b00ef3ed4298858c1a45865f4, type: 2}
-  - {fileID: 1355350049917654, guid: 9170ab66c1634824abdf587f83acd6c9, type: 2}
+  - {fileID: 1820233198639240, guid: c2e01d2b00ef3ed4298858c1a45865f4, type: 2}
+  - {fileID: 1596492529794178, guid: 9170ab66c1634824abdf587f83acd6c9, type: 2}
+  - {fileID: 1171766709817888, guid: a06c7b1f9e5cc14429fb779347ff6daf, type: 2}
   minHeight: 3
   maxHeight: 8
   scoreManager: {fileID: 320422217}
+  bonusManager: {fileID: 166603539}
 --- !u!4 &1580079633
 Transform:
   m_ObjectHideFlags: 0
@@ -13192,7 +13177,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2100663267}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 94f5d450d1bd94c97b1dc8109b633ac0, type: 3}
   m_Name: 

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TargetScript : MonoBehaviour, IDamageable
+public abstract class TargetScript : MonoBehaviour, IDamageable
 {
 
     public float desiredHeightOffset;
@@ -13,11 +13,9 @@ public class TargetScript : MonoBehaviour, IDamageable
 
     public Transform player;
 
-    public int points;
-    public ScoreManager scoreManager;
     AudioController audioController;
 
-    bool alreadyGavePoints = false;
+    protected bool broken = false;
     // Use this for initialization
     void Start()
     {
@@ -42,22 +40,7 @@ public class TargetScript : MonoBehaviour, IDamageable
         yield return null;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
 
-    }
+    public abstract void DealDamage(float damage);
 
-
-    public void DealDamage(float damage)
-    {
-        if(!alreadyGavePoints) {
-            scoreManager.AddPoints(this.points);
-            this.alreadyGavePoints = true;
-            Destroy(this.gameObject);
-        } else {
-            // Debug.Log("TRYING TO GIVE POINTS WHEN ALREADYGAVEPOINTS IS TRUE");
-        }
-        
-    }
 }

@@ -21,13 +21,14 @@ public class ScoreManager : MonoBehaviour
 
     public void AddPoints(int pointsToAdd)
     {
-        this.AddPoints(pointsToAdd, false);
+        this.AddPoints(pointsToAdd, true);
     }
     public void AddPoints(int pointsToAdd, bool useMultiplier)
     {
         // Increment the current points by the points to be added.
         // If we have to use the multiplier, then multiply and ceil the 
         // points to add by the multiplier.
+        Debug.Log("pointsToAdd: " + pointsToAdd + ", applying multiplier: " + (pointsToAdd * pointsMultiplier) + ", ceil to int: " + Mathf.CeilToInt(pointsToAdd * pointsMultiplier));
         this.points += (useMultiplier) ? Mathf.CeilToInt(pointsToAdd * pointsMultiplier) : pointsToAdd;
         // Update the UI points' display
         this.pointsMarker.text = "" + this.points;

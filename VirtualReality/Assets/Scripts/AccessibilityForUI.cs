@@ -76,11 +76,6 @@ public class AccessibilityForUI : MonoBehaviour
 
             timeLastPress = Time.time;
         }
-        // TODO: THIS SHOULDNT BE LIKE THIS!!!!!!! MUST CHECK FOR SHORT OR LONG PRESSES.
-        // if (Input.GetButtonUp("Fire2"))
-        // {
-        //     InteractWithCurrent();
-        // }
     }
 
 

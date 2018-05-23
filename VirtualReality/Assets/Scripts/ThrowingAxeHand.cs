@@ -38,12 +38,12 @@ public class ThrowingAxeHand : MonoBehaviour
         {
             if (CanShoot())
             {
-                Debug.Log("Can shoot!");
+                //Debug.Log("Can shoot!");
                 Shoot();
             }
             else
             {
-                Debug.Log("Cannot shoot yet...");
+                //Debug.Log("Cannot shoot yet...");
             }
         }
     }
@@ -51,8 +51,8 @@ public class ThrowingAxeHand : MonoBehaviour
     bool CanShoot()
     {
         float currentTime = Time.time;
-        Debug.Log("PreviouslyFiredTime: " + previouslyFiredTime);
-        Debug.Log("CurrentTime: " + currentTime);
+        //Debug.Log("PreviouslyFiredTime: " + previouslyFiredTime);
+        //Debug.Log("CurrentTime: " + currentTime);
         if (Mathf.Abs(currentTime - previouslyFiredTime) >= fireRate / this.fireRateMultiplier)
         {
             return true;
@@ -71,7 +71,7 @@ public class ThrowingAxeHand : MonoBehaviour
         {
             ShowAxe();
         }));
-        Debug.Log("Shooooootiiiing!!!!");
+        //Debug.Log("Shooooootiiiing!!!!");
 
         GameObject throwingAxe = Instantiate(this.throwingAxePrefab) as GameObject;
         throwingAxe.transform.SetPositionAndRotation(this.axeInHand.transform.position, Camera.main.transform.rotation);
@@ -80,13 +80,13 @@ public class ThrowingAxeHand : MonoBehaviour
 
     void HideAxe()
     {
-        Debug.Log("HideAxe() called");
+        //Debug.Log("HideAxe() called");
         StartCoroutine(MoveAxe(this.backAxePosition, this.animationTime));
     }
 
     void ShowAxe()
     {
-        Debug.Log("ShowAxe() called");
+        //Debug.Log("ShowAxe() called");
         StartCoroutine(MoveAxe(this.initialAxePosition, this.animationTime));
     }
 
@@ -107,15 +107,16 @@ public class ThrowingAxeHand : MonoBehaviour
 
     IEnumerator DelayCodeExecution(float time, System.Action<int> callBack)
     {
-        Debug.Log("DelayCodeExecution before waiting.");
+        //Debug.Log("DelayCodeExecution before waiting.");
         yield return new WaitForSecondsRealtime(time);
-        Debug.Log("DelayCodeExecution after waiting.");
+        //Debug.Log("DelayCodeExecution after waiting.");
         callBack(1);
         yield return null;
     }
 
     public void SetFireRateMultiplier(float multiplier)
     {
+        Debug.Log("Setting FireRateMultiplier to " + multiplier);
         // The multiplier before applying any changes.
         float previousMultiplier = this.fireRateMultiplier;
         // The new multiplier is applied.
