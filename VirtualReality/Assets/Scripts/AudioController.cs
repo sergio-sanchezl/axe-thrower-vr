@@ -21,7 +21,13 @@ public class AudioController : MonoBehaviour
     // method to call when we want to play a sound that will also have subtitles if they are enabled.
     public void Play()
     {
+        if(this.audioSource.isPlaying) {
+            Debug.Log("Audiosource is already playing. what.");
+        }
         this.audioSource.Play();
+        if(this.audioSource.isPlaying) {
+            Debug.Log("Audiosource is already playing. THIS SHOULD BE NORMAL!");
+        }
         subtitleManager.DisplaySubtitle(caption, captionDuration);
     }
 }
