@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 82625964278417006}
   - component: {fileID: 114417508235630132}
   - component: {fileID: 114578523391153652}
+  - component: {fileID: 114188295201832276}
   m_Layer: 0
   m_Name: Target 2 Points
   m_TagString: Untagged
@@ -73,7 +74,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1596492529794178}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.6954446, y: -0.17722893, z: 7.4180145}
+  m_LocalPosition: {x: 4.696538, y: -0.046964645, z: 7.334735}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4266345856058280}
@@ -305,6 +306,22 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &114188295201832276
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1596492529794178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 801746cc00faa304391da5b0d0e9601c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rendererToFetchMaterial: {fileID: 23901794860827652}
+  primaryColor: {r: 0.21140906, g: 0.8602941, b: 0.1581423, a: 1}
+  secondaryColor: {r: 1, g: 1, b: 1, a: 1}
+  primaryColorField: target_2_points_primary_color
+  secondaryColorField: target_2_points_secondary_color
 --- !u!114 &114417508235630132
 MonoBehaviour:
   m_ObjectHideFlags: 1

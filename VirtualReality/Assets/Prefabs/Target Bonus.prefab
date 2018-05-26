@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 82491255602338832}
   - component: {fileID: 114405718961383326}
   - component: {fileID: 114045813048074070}
+  - component: {fileID: 114039674366119550}
   m_Layer: 0
   m_Name: Target Bonus
   m_TagString: Untagged
@@ -99,7 +100,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1171766709817888}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.4644876, y: -0.08376312, z: 7.5071745}
+  m_LocalPosition: {x: 7.8351545, y: -0.21433067, z: 7.199995}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4359571648427514}
@@ -305,6 +306,22 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &114039674366119550
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1171766709817888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 801746cc00faa304391da5b0d0e9601c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rendererToFetchMaterial: {fileID: 23888595925522898}
+  primaryColor: {r: 0.17647058, g: 0.45476684, b: 1, a: 1}
+  secondaryColor: {r: 1, g: 1, b: 1, a: 1}
+  primaryColorField: target_bonus_primary_color
+  secondaryColorField: target_bonus_secondary_color
 --- !u!114 &114045813048074070
 MonoBehaviour:
   m_ObjectHideFlags: 1

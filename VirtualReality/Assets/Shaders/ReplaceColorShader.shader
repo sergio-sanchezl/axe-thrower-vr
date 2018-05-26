@@ -44,9 +44,9 @@
 			// 	c = _PrimaryColor;
 			// }
 			if(IN.uv_MainTex.x > 0.5) {
-				c = _PrimaryColor;
-			} else {
 				c = _SecondaryColor;
+			} else {
+				c = _PrimaryColor;
 			}
 			o.Albedo = c.rgb;
 			// Metallic and smoothness come from slider variables
