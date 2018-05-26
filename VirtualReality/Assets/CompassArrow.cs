@@ -10,7 +10,7 @@ public class CompassArrow : MonoBehaviour
     private GameObject target;
 
     // The gameobject containing the arrow's model.
-    private GameObject arrow;
+    [SerializeField] private GameObject arrow;
     private Color arrowColor = Color.white;
 
     private Material material;
@@ -30,11 +30,17 @@ public class CompassArrow : MonoBehaviour
     void Update()
     {
         if (target != null)
-        {
-            Vector3 targetPosition = new Vector3(target.transform.position.x, this.transform.position.y, target.transform.position.y);
-            this.transform.LookAt(targetPosition);
+        {   
+            // Vector3 targetPosition = new Vector3(target.transform.position.x, this.transform.position.y, target.transform.position.z);
+            // this.transform.LookAt(targetPosition, this.transform.parent.up);
+            this.transform.LookAt(target.transform);
+            this.transform.localEulerAngles = new Vector3(0f,this.transform.localEulerAngles.y,0f);
         }
 
+    }
+
+    public void SetTarget(GameObject target) {
+        this.target = target;
     }
 
 

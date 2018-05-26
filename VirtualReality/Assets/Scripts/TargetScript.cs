@@ -16,9 +16,13 @@ public abstract class TargetScript : MonoBehaviour, IDamageable
     AudioController audioController;
 
     protected bool broken = false;
+
+    protected Compass compass;
     // Use this for initialization
     void Start()
     {
+        this.compass = GameObject.FindGameObjectWithTag("Compass").GetComponent<Compass>();
+        this.compass.AddTargetToBeTracked(this.gameObject);
         this.initialPosition = this.transform.position;
         this.desiredPosition = this.initialPosition + new Vector3(0, desiredHeightOffset, 0);
         this.audioController = GetComponent<AudioController>();

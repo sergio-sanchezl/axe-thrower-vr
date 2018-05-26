@@ -10,6 +10,7 @@ TagManager:
   - SubtitlePanel
   - SubtitleManager
   - ScoreManager
+  - Compass
   layers:
   - Default
   - TransparentFX
