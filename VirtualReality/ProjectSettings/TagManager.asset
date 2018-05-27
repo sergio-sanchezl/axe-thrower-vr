@@ -11,6 +11,7 @@ TagManager:
   - SubtitleManager
   - ScoreManager
   - Compass
+  - SonarManager
   layers:
   - Default
   - TransparentFX

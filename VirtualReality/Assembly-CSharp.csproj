@@ -202,6 +202,8 @@
      <Compile Include="Assets\Scripts\ThrowingAxeProjectile.cs" />
      <Compile Include="Assets\Scripts\VibrateOnTap.cs" />
      <Compile Include="Assets\Scripts\VibrationToggler.cs" />
+     <Compile Include="Assets\SonarElement.cs" />
+     <Compile Include="Assets\SonarManager.cs" />
      <Compile Include="Assets\TimerManager.cs" />
      <None Include="Assets\External Assets\LowPolyWater_Pack\LowPoly Island\Credits.txt" />
      <None Include="Assets\External Assets\GoogleVR\Shaders\GvrUIOverlayFont.shader" />
