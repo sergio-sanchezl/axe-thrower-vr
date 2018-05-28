@@ -201,10 +201,10 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: faf3fd7fee897ac4bb258b25b358c622, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 31c78f5771428ae41bab5e2feaff1fc7, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
-  m_Pitch: 1.84
+  m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -338,6 +338,7 @@ MonoBehaviour:
   desiredHeightOffset: 0
   secondsToMove: 1
   player: {fileID: 0}
+  colliderContainer: {fileID: 1800030054839096}
   scoreManager: {fileID: 0}
   scoreYield: 1
 --- !u!114 &114282965694553982
@@ -482,7 +483,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef5e1719799ca4f9b9f5db81449517ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bypassRoomEffects: 0
+  bypassRoomEffects: 1
   directivityAlpha: 0
   directivitySharpness: 1
   listenerDirectivityAlpha: 0.778
