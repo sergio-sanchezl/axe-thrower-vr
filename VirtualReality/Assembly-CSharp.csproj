@@ -178,6 +178,7 @@
      <Compile Include="Assets\Scripts\Colorizer.cs" />
      <Compile Include="Assets\Scripts\Compass.cs" />
      <Compile Include="Assets\Scripts\CompassArrow.cs" />
+     <Compile Include="Assets\Scripts\DestructionScheduler.cs" />
      <Compile Include="Assets\Scripts\EnemySpawnerScript.cs" />
      <Compile Include="Assets\Scripts\FontScaleManager.cs" />
      <Compile Include="Assets\Scripts\FontScaler.cs" />

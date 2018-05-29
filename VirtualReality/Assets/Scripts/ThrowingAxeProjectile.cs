@@ -11,10 +11,12 @@ public class ThrowingAxeProjectile : MonoBehaviour, IChildsCollisionReceiver
 
     public Transform whatShouldRotate;
     public float damage = 0f;
+
+    private Coroutine destructionCoroutine;
     // Use this for initialization
     void Start()
     {
-
+        this.destructionCoroutine = StartCoroutine((this.gameObject.AddComponent(typeof(DestructionScheduler)) as DestructionScheduler).DestroyAfterTime(3f));
     }
 
     // Update is called once per frame
@@ -38,8 +40,11 @@ public class ThrowingAxeProjectile : MonoBehaviour, IChildsCollisionReceiver
         Debug.Log("Collision detected!");
         // We rotate the axe according to the normal of the face of the point of collision.
         transform.rotation = Quaternion.FromToRotation(Vector3.forward, collision.contacts[0].normal);
+        // now we are stuck in place, so we stop the schedule of the destruction of the axe.
         stuckInPlace = true;
+        StopCoroutine(this.destructionCoroutine);
         this.transform.parent = collision.transform;
+        // THIS CAN BE REPLACED WITH GetComponentInChildren!.
         IDamageable damageable = collision.transform.GetComponent(typeof(IDamageable)) as IDamageable;
         if (damageable == null && collision.transform.parent != null)
         {

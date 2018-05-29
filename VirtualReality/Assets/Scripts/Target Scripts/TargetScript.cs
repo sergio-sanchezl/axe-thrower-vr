@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public abstract class TargetScript : MonoBehaviour, IDamageable
 {
 
@@ -64,5 +63,9 @@ public abstract class TargetScript : MonoBehaviour, IDamageable
         this.targetRigidbody.isKinematic = false;
         this.targetRigidbody.useGravity = true;
         this.targetRigidbody.AddRelativeForce(Vector3.right * 5f, ForceMode.Impulse);
+        
+        // Destroy after 3 seconds.
+        StartCoroutine((this.gameObject.AddComponent(typeof(DestructionScheduler)) as DestructionScheduler).DestroyAfterTime(3f));
+        
     }
 }
