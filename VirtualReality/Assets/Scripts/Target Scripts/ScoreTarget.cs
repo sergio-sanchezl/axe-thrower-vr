@@ -16,8 +16,10 @@ public class ScoreTarget : TargetScript
             scoreManager.AddPoints(this.scoreYield);
             this.broken = true;
             this.compass.DeleteTarget(this.gameObject);
-            DisableColliders();
-            Destroy(this.gameObject);
+            AnimateDestruction();
+        
+            // DisableColliders();
+            //Destroy(this.gameObject);
         }
     }
 }

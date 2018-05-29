@@ -22,9 +22,11 @@ public abstract class TargetScript : MonoBehaviour, IDamageable
     // reference to the gameobject that contains this target's colliders.
     [SerializeField] protected GameObject colliderContainer;
 
+    private Rigidbody targetRigidbody;
     // Use this for initialization
     void Start()
     {
+        this.targetRigidbody = GetComponentInChildren<Rigidbody>();
         this.compass = GameObject.FindGameObjectWithTag("Compass").GetComponent<Compass>();
         this.compass.AddTargetToBeTracked(this.gameObject);
         this.initialPosition = this.transform.position;
@@ -55,5 +57,12 @@ public abstract class TargetScript : MonoBehaviour, IDamageable
         foreach (Collider collider in this.colliderContainer.GetComponents<Collider>()) {
             collider.enabled = false;
         }
+    }
+
+    public void AnimateDestruction() {
+        DisableColliders();
+        this.targetRigidbody.isKinematic = false;
+        this.targetRigidbody.useGravity = true;
+        this.targetRigidbody.AddRelativeForce(Vector3.right * 5f, ForceMode.Impulse);
     }
 }
