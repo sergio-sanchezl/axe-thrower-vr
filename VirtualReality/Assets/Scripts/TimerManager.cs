@@ -18,7 +18,7 @@ public class TimerManager : MonoBehaviour
     // UI element for the timer value to be displayed. 
     public Text timerText;
 
-    public EnemySpawnerScript enemySpawner;
+    public TargetSpawner enemySpawner;
     void Start()
     {
         this.timerText.text = ParseSecondsToString(this.timerEnd - this.secondsElapsed);

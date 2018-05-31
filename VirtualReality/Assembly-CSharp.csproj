@@ -179,7 +179,6 @@
      <Compile Include="Assets\Scripts\Compass.cs" />
      <Compile Include="Assets\Scripts\CompassArrow.cs" />
      <Compile Include="Assets\Scripts\DestructionScheduler.cs" />
-     <Compile Include="Assets\Scripts\EnemySpawnerScript.cs" />
      <Compile Include="Assets\Scripts\FontScaleManager.cs" />
      <Compile Include="Assets\Scripts\FontScaler.cs" />
      <Compile Include="Assets\Scripts\HighContrastModeManager.cs" />
@@ -196,6 +195,8 @@
      <Compile Include="Assets\Scripts\Target Scripts\IDamageable.cs" />
      <Compile Include="Assets\Scripts\Target Scripts\ScoreTarget.cs" />
      <Compile Include="Assets\Scripts\Target Scripts\TargetScript.cs" />
+     <Compile Include="Assets\Scripts\Target Spawner\EntityWithProbability.cs" />
+     <Compile Include="Assets\Scripts\Target Spawner\TargetSpawner.cs" />
      <Compile Include="Assets\Scripts\ThrowingAxeHand.cs" />
      <Compile Include="Assets\Scripts\ThrowingAxeProjectile.cs" />
      <Compile Include="Assets\Scripts\TimerManager.cs" />
