@@ -10,7 +10,7 @@ public class TimerManager : MonoBehaviour
     public int timerEnd = 3;
 
     // The seconds elapsed since the start of the timer.
-    public int secondsElapsed = 0;
+    private int secondsElapsed = 0;
 
     // // The actual time when the timer started. Maybe not needed.
     // public int timerStart;
@@ -18,7 +18,7 @@ public class TimerManager : MonoBehaviour
     // UI element for the timer value to be displayed. 
     public Text timerText;
 
-    public TargetSpawner enemySpawner;
+    [SerializeField] private GameEndManager gameEndManager;
     void Start()
     {
         this.timerText.text = ParseSecondsToString(this.timerEnd - this.secondsElapsed);
@@ -65,11 +65,6 @@ public class TimerManager : MonoBehaviour
         }
     }
 
-    // Do things that should be done when ending the timer.
-    void PerformEndOfTimerTasks()
-    {
-        enemySpawner.active = false;
-    }
     string ParseSecondsToString(int seconds)
     {
         TimeSpan time = TimeSpan.FromSeconds(seconds);
@@ -80,5 +75,15 @@ public class TimerManager : MonoBehaviour
     {
         this.timerEnd += extraSeconds;
         UpdateTimer();
+    }
+
+    public int GetSecondsElapsed() {
+        return secondsElapsed;
+    }
+
+    // Do things that should be done when ending the timer.
+    void PerformEndOfTimerTasks()
+    {
+        this.gameEndManager.TriggerMatchEnd();
     }
 }

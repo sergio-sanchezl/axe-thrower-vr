@@ -21,7 +21,7 @@ public class BonusManager : MonoBehaviour
 
     public void ExecuteRandomBonus()
     {
-        // 1 inclusive, 5 exclusive. i.e. -> will yield 1, 2, 3 or 4.
+        // 1 inclusive, 5 exclusive: this will yield 1, 2, 3 or 4.
         int randomNumber = Random.Range(1, 5);
         switch (randomNumber)
         {

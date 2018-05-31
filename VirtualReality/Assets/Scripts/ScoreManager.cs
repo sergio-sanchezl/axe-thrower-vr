@@ -8,7 +8,7 @@ public class ScoreManager : MonoBehaviour
 
     public bool speechEnabled = false;
     public TextToSpeech tts;
-    public int points;
+    private int points;
     public Text pointsMarker;
 
     public float pointsMultiplier = 1f;
@@ -35,12 +35,16 @@ public class ScoreManager : MonoBehaviour
         // 
         if (speechEnabled && tts != null)
         {
-            tts.Speak(this.points + " puntos");
+            tts.Speak((this.points) == 1 ? this.points + " punto" : this.points + " puntos");
         }
     }
 
     public void SetMultiplier(float value)
     {
         this.pointsMultiplier = value;
+    }
+
+    public int GetPoints() {
+        return points;
     }
 }

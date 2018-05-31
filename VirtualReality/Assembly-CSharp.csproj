@@ -169,6 +169,8 @@
      <Compile Include="Assets\External Assets\ResonanceAudio\Scripts\ResonanceAudioRoom.cs" />
      <Compile Include="Assets\External Assets\ResonanceAudio\Scripts\ResonanceAudioRoomManager.cs" />
      <Compile Include="Assets\External Assets\ResonanceAudio\Scripts\ResonanceAudioSource.cs" />
+     <Compile Include="Assets\GameEndManager.cs" />
+     <Compile Include="Assets\PlayerPrefsWiper.cs" />
      <Compile Include="Assets\Scripts\AccessibilityForUI.cs" />
      <Compile Include="Assets\Scripts\AlternativeText.cs" />
      <Compile Include="Assets\Scripts\AudioController.cs" />
