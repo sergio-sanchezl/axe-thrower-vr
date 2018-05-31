@@ -9113,7 +9113,7 @@ GameObject:
   - component: {fileID: 1580079633}
   - component: {fileID: 1580079632}
   m_Layer: 0
-  m_Name: EnemySpawner
+  m_Name: Target Spawner
   m_TagString: Untagged
   m_Icon: {fileID: -6488666005112524639, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -9127,7 +9127,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1580079631}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc497b8824b3b834fb5743fb0d697fcb, type: 3}
+  m_Script: {fileID: 11500000, guid: 47f731dd5798775449c7f450135c8f37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 907292807}
@@ -9136,9 +9136,12 @@ MonoBehaviour:
   spawnAngle: 180
   timeBetweenSpawns: 2
   objectsToSpawn:
-  - {fileID: 1820233198639240, guid: c2e01d2b00ef3ed4298858c1a45865f4, type: 2}
-  - {fileID: 1596492529794178, guid: 9170ab66c1634824abdf587f83acd6c9, type: 2}
-  - {fileID: 1171766709817888, guid: a06c7b1f9e5cc14429fb779347ff6daf, type: 2}
+  - entity: {fileID: 1820233198639240, guid: c2e01d2b00ef3ed4298858c1a45865f4, type: 2}
+    probabilityPercentage: 35
+  - entity: {fileID: 1596492529794178, guid: 9170ab66c1634824abdf587f83acd6c9, type: 2}
+    probabilityPercentage: 35
+  - entity: {fileID: 1171766709817888, guid: a06c7b1f9e5cc14429fb779347ff6daf, type: 2}
+    probabilityPercentage: 10
   minHeight: 3
   maxHeight: 8
   scoreManager: {fileID: 320422217}
