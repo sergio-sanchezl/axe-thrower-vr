@@ -20,13 +20,13 @@ public class ThrowingAxeProjectile : MonoBehaviour, IChildsCollisionReceiver
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (!stuckInPlace)
         {
             this.transform.Translate((Vector3.forward * movementSpeed * Time.deltaTime), Space.Self);
             whatShouldRotate.Rotate(rotationSpeed * Time.deltaTime, 0f, 0f);
-        }
+        }   
     }
     public void ReceiveCollisionEnter(Collision collision)
     {

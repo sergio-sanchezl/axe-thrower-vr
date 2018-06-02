@@ -51,17 +51,17 @@ public class AccessibilityForUI : MonoBehaviour
     }
     // Update is called once per frame
     void Update()
-    {
+    {   
         if (Input.GetButtonDown("Fire1") || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began))
         {
-            timeLastPress = Time.time;
+            timeLastPress = Time.unscaledTime;
             // ShiftIndex(true);
         }
 
         if (Input.GetButtonUp("Fire1") || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended))
         {
 
-            if (Time.time - timeLastPress > timeDelayThreshold)
+            if (Time.unscaledTime - timeLastPress > timeDelayThreshold)
             {
                 // Long press.
                 Debug.Log("Long press!");
@@ -74,7 +74,7 @@ public class AccessibilityForUI : MonoBehaviour
                 ShiftIndex(true);
             }
 
-            timeLastPress = Time.time;
+            timeLastPress = Time.unscaledTime;
         }
     }
 

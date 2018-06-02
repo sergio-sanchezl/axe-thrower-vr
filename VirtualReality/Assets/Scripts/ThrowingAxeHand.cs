@@ -108,7 +108,7 @@ public class ThrowingAxeHand : MonoBehaviour
     IEnumerator DelayCodeExecution(float time, System.Action<int> callBack)
     {
         //Debug.Log("DelayCodeExecution before waiting.");
-        yield return new WaitForSecondsRealtime(time);
+        yield return new WaitForSeconds(time);
         //Debug.Log("DelayCodeExecution after waiting.");
         callBack(1);
         yield return null;
