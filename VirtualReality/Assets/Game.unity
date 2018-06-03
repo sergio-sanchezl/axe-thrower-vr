@@ -1438,6 +1438,7 @@ GameObject:
   m_Component:
   - component: {fileID: 253692490}
   - component: {fileID: 253692491}
+  - component: {fileID: 253692492}
   m_Layer: 5
   m_Name: Label (2)
   m_TagString: Label
@@ -1470,6 +1471,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 253692489}
+--- !u!114 &253692492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 253692489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca51ad46bdfc35f44bcd4e522472e24f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  altText: 
 --- !u!4 &268017606 stripped
 Transform:
   m_PrefabParentObject: {fileID: 493548, guid: 237fc278131d8dc4c9dd556f706cd958, type: 2}
@@ -6567,8 +6580,12 @@ MonoBehaviour:
   throwingAxeHand: {fileID: 357327369}
   compass: {fileID: 1010938203}
   canvas: {fileID: 1829129038}
-  resultsText: {fileID: 1123377939}
-  recordText: {fileID: 910710739}
+  resultsText:
+    text: {fileID: 1123377939}
+    altText: {fileID: 1333720170}
+  recordText:
+    text: {fileID: 910710739}
+    altText: {fileID: 253692492}
 --- !u!4 &1091309551
 Transform:
   m_ObjectHideFlags: 0
@@ -6824,7 +6841,7 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 10
-    m_FontStyle: 1
+    m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 40
@@ -6834,7 +6851,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "\xA1Has conseguido 210 puntos en un tiempo de 2:10!"
+  m_Text: "\xA1Has conseguido <b><color=\"#000000\">210</color></b> puntos en un tiempo
+    de 2:10!"
 --- !u!222 &1123377940
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7954,6 +7972,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1333720168}
   - component: {fileID: 1333720169}
+  - component: {fileID: 1333720170}
   m_Layer: 5
   m_Name: Label (1)
   m_TagString: Label
@@ -7986,6 +8005,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1333720167}
+--- !u!114 &1333720170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1333720167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca51ad46bdfc35f44bcd4e522472e24f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  altText: 
 --- !u!4 &1334031667 stripped
 Transform:
   m_PrefabParentObject: {fileID: 454010, guid: 392192046514d4e4c8742dc8fe055de2, type: 2}
@@ -9765,7 +9796,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 187d880f200dcca4fbcc217f2872455b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeScale: 0.5
+  timeScale: 1
 --- !u!4 &1552944804
 Transform:
   m_ObjectHideFlags: 0

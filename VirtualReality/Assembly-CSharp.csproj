@@ -169,8 +169,6 @@
      <Compile Include="Assets\External Assets\ResonanceAudio\Scripts\ResonanceAudioRoom.cs" />
      <Compile Include="Assets\External Assets\ResonanceAudio\Scripts\ResonanceAudioRoomManager.cs" />
      <Compile Include="Assets\External Assets\ResonanceAudio\Scripts\ResonanceAudioSource.cs" />
-     <Compile Include="Assets\GameEndManager.cs" />
-     <Compile Include="Assets\GameSpeedModifier.cs" />
      <Compile Include="Assets\PlayerPrefsWiper.cs" />
      <Compile Include="Assets\Scripts\AccessibilityForUI.cs" />
      <Compile Include="Assets\Scripts\AlternativeText.cs" />
@@ -184,6 +182,8 @@
      <Compile Include="Assets\Scripts\DestructionScheduler.cs" />
      <Compile Include="Assets\Scripts\FontScaleManager.cs" />
      <Compile Include="Assets\Scripts\FontScaler.cs" />
+     <Compile Include="Assets\Scripts\GameEndManager.cs" />
+     <Compile Include="Assets\Scripts\GameSpeedModifier.cs" />
      <Compile Include="Assets\Scripts\HighContrastModeManager.cs" />
      <Compile Include="Assets\Scripts\IChildsCollisionReceiver.cs" />
      <Compile Include="Assets\Scripts\MenuManager.cs" />
@@ -200,6 +200,7 @@
      <Compile Include="Assets\Scripts\Target Scripts\TargetScript.cs" />
      <Compile Include="Assets\Scripts\Target Spawner\EntityWithProbability.cs" />
      <Compile Include="Assets\Scripts\Target Spawner\TargetSpawner.cs" />
+     <Compile Include="Assets\Scripts\TextAndAltText.cs" />
      <Compile Include="Assets\Scripts\ThrowingAxeHand.cs" />
      <Compile Include="Assets\Scripts\ThrowingAxeProjectile.cs" />
      <Compile Include="Assets\Scripts\TimerManager.cs" />
