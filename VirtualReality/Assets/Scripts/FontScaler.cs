@@ -11,7 +11,7 @@ public class FontScaler : MonoBehaviour {
 
 	public int currentSize;
 	// Use this for initialization
-	void Awake () {
+	void Start () {
 		// Debug.Log("Font scaler AWAKE()");
 		this.text = GetComponent<Text>();
 		this.baseFontSize = text.fontSize;
@@ -24,15 +24,19 @@ public class FontScaler : MonoBehaviour {
 	}
 
 	public void Notify() {
-		Debug.Log("Font scaler NOTIFY!");
+		Debug.Log("Font scaler NOTIFY!" + this.fontScaleManager.GetScale());
 		this.text.fontSize = Mathf.RoundToInt(this.fontScaleManager.GetScale() * baseFontSize);
 		this.currentSize = this.text.fontSize;
 	}
 
+	// OnEnable is called before Start, so we have to nullcheck.
 	void OnEnable()
 	{
 		// Debug.Log("On Enable Font Scaler");
-		this.text.fontSize = Mathf.RoundToInt(this.fontScaleManager.GetScale() * baseFontSize);	
-		this.currentSize = this.text.fontSize;	
+		if(this.fontScaleManager != null && text != null) {
+			this.text.fontSize = Mathf.RoundToInt(this.fontScaleManager.GetScale() * baseFontSize);	
+			this.currentSize = this.text.fontSize;	
+		}
+		
 	}
 }

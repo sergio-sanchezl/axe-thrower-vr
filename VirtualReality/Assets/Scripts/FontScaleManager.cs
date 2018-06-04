@@ -9,7 +9,7 @@ public class FontScaleManager : MonoBehaviour {
 	public float maximumScale = 2f;
 	public float stepScale = 0.25f;
 	public ArrayList observers = new ArrayList();
-	void Start() {
+	void Awake() {
 		this.scale = PlayerPrefs.GetFloat("font_scale", 1f);
 	}
 
