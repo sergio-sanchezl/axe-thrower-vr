@@ -1453,7 +1453,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 253692489}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.4}
+  m_LocalPosition: {x: 0, y: 0, z: -0.43}
   m_LocalScale: {x: 0.30391234, y: 0.30391234, z: 0.15184753}
   m_Children:
   - {fileID: 910710737}
@@ -1462,8 +1462,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -0, y: -21.03}
-  m_SizeDelta: {x: 165.484, y: 32.285}
+  m_AnchoredPosition: {x: -0.33, y: -22.37}
+  m_SizeDelta: {x: 244.77, y: 32.28}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &253692491
 CanvasRenderer:
@@ -4914,7 +4914,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fontScaleManager: {fileID: 2118160731}
-  baseFontSize: 14
+  baseFontSize: 0
   text: {fileID: 844181121}
   currentSize: 0
 --- !u!114 &844181121
@@ -4941,7 +4941,7 @@ MonoBehaviour:
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 0
     m_MaxSize: 40
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -4949,7 +4949,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Volver al men\xFA\n"
+  m_Text: "Volver al men\xFA"
 --- !u!222 &844181122
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5478,7 +5478,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fontScaleManager: {fileID: 2118160731}
-  baseFontSize: 11
+  baseFontSize: 0
   text: {fileID: 910710739}
   currentSize: 0
 --- !u!114 &910710739
@@ -5502,7 +5502,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 11
+    m_FontSize: 9
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -6816,7 +6816,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fontScaleManager: {fileID: 2118160731}
-  baseFontSize: 11
+  baseFontSize: 0
   text: {fileID: 1123377939}
   currentSize: 0
 --- !u!114 &1123377939
@@ -6840,7 +6840,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 10
+    m_FontSize: 11
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -7411,7 +7411,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fae67aa3f96a6a40ac2cb4bee78b992, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timerEnd: 60
+  timerEnd: 1
   timerText: {fileID: 2123516758}
   gameEndManager: {fileID: 1091309550}
 --- !u!4 &1242530740
@@ -7987,7 +7987,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1333720167}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.16}
+  m_LocalPosition: {x: 0, y: 0, z: -0.15}
   m_LocalScale: {x: 0.30391234, y: 0.30391237, z: 0.15184751}
   m_Children:
   - {fileID: 1123377937}
@@ -7996,8 +7996,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0.0000000046762443, y: -10.360795}
-  m_SizeDelta: {x: 165.484, y: 33.832}
+  m_AnchoredPosition: {x: -0.63, y: -10.36}
+  m_SizeDelta: {x: 248.06, y: 33.83}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &1333720169
 CanvasRenderer:
@@ -8291,7 +8291,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fontScaleManager: {fileID: 2118160731}
-  baseFontSize: 12
+  baseFontSize: 0
   text: {fileID: 1359136844}
   currentSize: 0
 --- !u!114 &1359136844
@@ -8315,7 +8315,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 12
+    m_FontSize: 10
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 1
@@ -8768,7 +8768,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1411782708}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.12}
+  m_LocalPosition: {x: 0, y: 0, z: -0.129}
   m_LocalScale: {x: 0.1518476, y: 0.15184753, z: 0.15184756}
   m_Children:
   - {fileID: 844181119}
@@ -8777,8 +8777,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000000057120253, y: -14.540369}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: -0, y: -14.939}
+  m_SizeDelta: {x: 160, y: 35.257}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1415961621
 Prefab:
@@ -9063,7 +9063,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 7
-  m_Spacing: -6
+  m_Spacing: -10
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
@@ -11772,7 +11772,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1829129039
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11877,8 +11877,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: -1.297, y: -0.64500004, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -0.036, y: 1.469}
-  m_SizeDelta: {x: 57, y: 42.68}
+  m_AnchoredPosition: {x: -0.0661, y: 1.469}
+  m_SizeDelta: {x: 79.805, y: 42.68}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!4 &1830958381 stripped
 Transform:
@@ -11913,7 +11913,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1842499393}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.003}
   m_LocalScale: {x: 0.3038338, y: 0.3038338, z: 0.1519169}
   m_Children:
   - {fileID: 1359136842}
@@ -11922,8 +11922,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -3.47}
-  m_SizeDelta: {x: 170.259, y: 15.817}
+  m_AnchoredPosition: {x: -0.238, y: -3.471}
+  m_SizeDelta: {x: 248.42, y: 15.817}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!4 &1844029446 stripped
 Transform:
@@ -13493,7 +13493,7 @@ GameObject:
   - component: {fileID: 2118160731}
   m_Layer: 0
   m_Name: FontScaleManager
-  m_TagString: Untagged
+  m_TagString: FontScaleManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -12,6 +12,7 @@ TagManager:
   - ScoreManager
   - Compass
   - SonarManager
+  - FontScaleManager
   layers:
   - Default
   - TransparentFX
