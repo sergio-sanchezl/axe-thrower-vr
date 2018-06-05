@@ -169,8 +169,6 @@
      <Compile Include="Assets\External Assets\ResonanceAudio\Scripts\ResonanceAudioRoom.cs" />
      <Compile Include="Assets\External Assets\ResonanceAudio\Scripts\ResonanceAudioRoomManager.cs" />
      <Compile Include="Assets\External Assets\ResonanceAudio\Scripts\ResonanceAudioSource.cs" />
-     <Compile Include="Assets\PlayerPrefsWiper.cs" />
-     <Compile Include="Assets\ScoreHolderPositionCalculator.cs" />
      <Compile Include="Assets\Scripts\AccessibilityForUI.cs" />
      <Compile Include="Assets\Scripts\AlternativeText.cs" />
      <Compile Include="Assets\Scripts\AudioController.cs" />
@@ -189,7 +187,9 @@
      <Compile Include="Assets\Scripts\IChildsCollisionReceiver.cs" />
      <Compile Include="Assets\Scripts\MenuManager.cs" />
      <Compile Include="Assets\Scripts\PaletteGetter.cs" />
+     <Compile Include="Assets\Scripts\PlayerPrefsWiper.cs" />
      <Compile Include="Assets\Scripts\SceneSwitcher.cs" />
+     <Compile Include="Assets\Scripts\ScoreHolderPositionCalculator.cs" />
      <Compile Include="Assets\Scripts\ScoreManager.cs" />
      <Compile Include="Assets\Scripts\SonarElement.cs" />
      <Compile Include="Assets\Scripts\SonarManager.cs" />
@@ -217,6 +217,7 @@
      <None Include="Assets\External Assets\GoogleVR\Shaders\GvrUIOverlayFont.shader" />
      <None Include="Assets\External Assets\LowPolyWater_Pack\Shaders\WaterShaded.shader" />
      <None Include="Assets\External Assets\GoogleVR\Shaders\GvrAdditiveOverlay.shader" />
+     <None Include="Assets\Shaders\UIPaintAboveAll.shader" />
      <None Include="Assets\External Assets\GoogleVR\Shaders\GvrController.shader" />
      <None Include="Assets\External Assets\GoogleVR\Shaders\GvrUnlitTransparentOverlay.shader" />
      <None Include="Assets\External Assets\GoogleVR\Shaders\GvrUnlitTransparentOverlayColor.shader" />
