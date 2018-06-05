@@ -7610,6 +7610,7 @@ GameObject:
   - component: {fileID: 800051951}
   - component: {fileID: 800051950}
   - component: {fileID: 800051949}
+  - component: {fileID: 800051952}
   m_Layer: 5
   m_Name: High Contrast Button
   m_TagString: Button
@@ -7675,8 +7676,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1747723533}
-        m_MethodName: ToggleFocusMode
+      - m_Target: {fileID: 120068427}
+        m_MethodName: ToggleHighContrastMode
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7721,6 +7722,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 800051947}
+--- !u!114 &800051952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 800051947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca51ad46bdfc35f44bcd4e522472e24f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  altText: Alternar modo de alto contraste
 --- !u!1 &812075572
 GameObject:
   m_ObjectHideFlags: 0
@@ -8814,7 +8827,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca51ad46bdfc35f44bcd4e522472e24f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  altText: "Siguiente p\xE1gina"
+  altText: "P\xE1gina siguiente"
 --- !u!1001 &927779153
 Prefab:
   m_ObjectHideFlags: 0
@@ -11991,6 +12004,7 @@ GameObject:
   - component: {fileID: 1241777948}
   - component: {fileID: 1241777947}
   - component: {fileID: 1241777946}
+  - component: {fileID: 1241777949}
   m_Layer: 5
   m_Name: Next Button
   m_TagString: Button
@@ -12102,6 +12116,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1241777944}
+--- !u!114 &1241777949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1241777944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca51ad46bdfc35f44bcd4e522472e24f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  altText: "P\xE1gina siguiente"
 --- !u!1 &1247464029
 GameObject:
   m_ObjectHideFlags: 0
@@ -12113,6 +12139,7 @@ GameObject:
   - component: {fileID: 1247464033}
   - component: {fileID: 1247464032}
   - component: {fileID: 1247464031}
+  - component: {fileID: 1247464034}
   m_Layer: 5
   m_Name: Game Speed Options Button
   m_TagString: Button
@@ -12224,6 +12251,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1247464029}
+--- !u!114 &1247464034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1247464029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca51ad46bdfc35f44bcd4e522472e24f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  altText: Cambiar velocidad de juego
 --- !u!1 &1256041538
 GameObject:
   m_ObjectHideFlags: 0
@@ -15693,6 +15732,7 @@ GameObject:
   - component: {fileID: 1513207787}
   - component: {fileID: 1513207786}
   - component: {fileID: 1513207785}
+  - component: {fileID: 1513207788}
   m_Layer: 5
   m_Name: Previous Button
   m_TagString: Button
@@ -15804,6 +15844,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1513207783}
+--- !u!114 &1513207788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1513207783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca51ad46bdfc35f44bcd4e522472e24f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  altText: "P\xE1gina anterior"
 --- !u!4 &1522079367 stripped
 Transform:
   m_PrefabParentObject: {fileID: 493548, guid: 237fc278131d8dc4c9dd556f706cd958, type: 2}
@@ -17875,7 +17927,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca51ad46bdfc35f44bcd4e522472e24f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  altText: Cambiar color de diana de 1 punto
+  altText: Cambiar color de diana de un punto
 --- !u!1001 &1727014972
 Prefab:
   m_ObjectHideFlags: 0
@@ -19971,6 +20023,7 @@ GameObject:
   - component: {fileID: 1928630581}
   - component: {fileID: 1928630580}
   - component: {fileID: 1928630579}
+  - component: {fileID: 1928630582}
   m_Layer: 5
   m_Name: Target Angle Button
   m_TagString: Button
@@ -20082,6 +20135,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1928630577}
+--- !u!114 &1928630582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1928630577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca51ad46bdfc35f44bcd4e522472e24f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  altText: Cambiar amplitud de zona de juego
 --- !u!1 &1940403249
 GameObject:
   m_ObjectHideFlags: 0
