@@ -20,6 +20,7 @@ public class GameEndManager : MonoBehaviour
 
     [SerializeField] private TextAndAltText recordText;
 
+    [SerializeField] private GameObject worldTimerScoreContainer;
     public void TriggerMatchEnd()
     {
         int score = scoreManager.GetPoints();
@@ -29,7 +30,7 @@ public class GameEndManager : MonoBehaviour
         targetSpawner.active = false;
         throwingAxeHand.SetActive(false);
         compass.SetActive(false);
-
+        worldTimerScoreContainer.SetActive(false);
         canvas.SetActive(true);
 
         resultsText.SetText("¡Has conseguido <b><color=\"#000000\">" + score + "</color></b> puntos en un tiempo de <b><color=\"#000000\">" + ParseSecondsToString(time) + "</color></b>!");
