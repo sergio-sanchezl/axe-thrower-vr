@@ -12,7 +12,6 @@ public class ThrowingAxeHand : MonoBehaviour
     public float fireRate;
 
     public float damage; // Damage dealt to the hit entity.
-                         // Use this for initialization
 
     public GameObject axeInHand;
     public Object throwingAxePrefab;
@@ -25,6 +24,10 @@ public class ThrowingAxeHand : MonoBehaviour
     public float fireRateMultiplier = 1f;
 
     public Coroutine showAxeDelayCoroutine;
+
+    [SerializeField] private float projectileSpeed = 1f;
+    public float ProjectileSpeed {get; set;}
+
     void Start()
     {
         this.initialAxePosition = this.axeInHand.transform.localPosition;
@@ -75,6 +78,7 @@ public class ThrowingAxeHand : MonoBehaviour
 
         GameObject throwingAxe = Instantiate(this.throwingAxePrefab) as GameObject;
         throwingAxe.transform.SetPositionAndRotation(this.axeInHand.transform.position, Camera.main.transform.rotation);
+        throwingAxe.GetComponent<ThrowingAxeProjectile>().movementSpeed = this.projectileSpeed;
         // throwingAxe.transform.Rota
     }
 

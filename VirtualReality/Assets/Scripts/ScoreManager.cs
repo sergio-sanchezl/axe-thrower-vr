@@ -17,6 +17,7 @@ public class ScoreManager : MonoBehaviour
     {
         this.points = 0;
 		this.pointsMarker.text = "" + this.points;
+        this.speechEnabled = PlayerPrefs.GetInt("focus_mode", 0) == 1;
     }
 
     public void AddPoints(int pointsToAdd)
@@ -35,7 +36,16 @@ public class ScoreManager : MonoBehaviour
         // 
         if (speechEnabled && tts != null)
         {
-            tts.Speak((this.points) == 1 ? this.points + " punto" : this.points + " puntos");
+            tts.SetSpeed(1.5f);
+            string spokenText = "";
+            if(this.points < 0) {
+                int positivePoints = -points;
+                spokenText = "Tienes menos " + ((positivePoints) == 1 ? "un punto" : positivePoints + " puntos");
+            } else {
+                spokenText = "Tienes " + ((this.points) == 1 ? "un punto" : this.points + " puntos");
+            }
+            tts.Speak(spokenText);
+            // tts.SetSpeed(1.0f);
         }
     }
 

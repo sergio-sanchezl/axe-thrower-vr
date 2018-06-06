@@ -28,7 +28,7 @@ public class Colorizer : MonoBehaviour
     private void LoadColors()
     {
 		this.primaryColor = GetColorFromPlayerPrefs(primaryColorField);
-		this.secondaryColor = GetColorFromPlayerPrefs(secondaryColorField);
+		// this.secondaryColor = GetColorFromPlayerPrefs(secondaryColorField);
     }
 
     private Color GetColorFromPlayerPrefs(string key)

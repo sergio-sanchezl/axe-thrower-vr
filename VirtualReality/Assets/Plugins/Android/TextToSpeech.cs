@@ -72,6 +72,7 @@ public class TextToSpeech : MonoBehaviour
     }
     public void Speak(string toSay)
     {
+        Debug.Log("Called TextToSpeech.Speak(\"" + toSay + "\")");
         if (TTSExample == null)
         {
             Initialize();

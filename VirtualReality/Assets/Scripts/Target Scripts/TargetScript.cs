@@ -22,6 +22,8 @@ public abstract class TargetScript : MonoBehaviour, IDamageable
     [SerializeField] protected GameObject colliderContainer;
 
     private Rigidbody targetRigidbody;
+
+    [SerializeField] private GameObject sonarTrigger;
     // Use this for initialization
     void Start()
     {
@@ -59,6 +61,10 @@ public abstract class TargetScript : MonoBehaviour, IDamageable
     }
 
     public void AnimateDestruction() {
+        if(sonarTrigger != null) {
+            sonarTrigger.GetComponent<NearbySonarElement>().sonarElement.StopSound();
+            Destroy(sonarTrigger);
+        }
         DisableColliders();
         this.targetRigidbody.isKinematic = false;
         this.targetRigidbody.useGravity = true;

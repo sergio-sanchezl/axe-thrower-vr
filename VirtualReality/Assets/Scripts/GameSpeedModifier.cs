@@ -6,15 +6,13 @@ public class GameSpeedModifier : MonoBehaviour
 {
 
     [SerializeField] private float timeScale;
+
+    [SerializeField] private ThrowingAxeHand weapon;
     // Use this for initialization
     void Start()
     {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-		Time.timeScale = timeScale;
+      // this.timeScale = PlayerPrefs.GetFloat("game_speed", 1.0f);
+      // weapon.ProjectileSpeed = weapon.ProjectileSpeed / timeScale;
+      Time.timeScale = timeScale;
     }
 }
