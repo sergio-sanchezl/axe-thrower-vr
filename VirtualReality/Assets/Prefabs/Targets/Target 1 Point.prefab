@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 54772199302858324}
   - component: {fileID: 65856889542916552}
   - component: {fileID: 114679492695317142}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Target 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -120,7 +120,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1820233198639240}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.0540075, y: -0.15732336, z: 8.248202}
+  m_LocalPosition: {x: 6.96073, y: -0.053416252, z: 3.929604}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4193872344167446}
@@ -257,7 +257,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 3
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0

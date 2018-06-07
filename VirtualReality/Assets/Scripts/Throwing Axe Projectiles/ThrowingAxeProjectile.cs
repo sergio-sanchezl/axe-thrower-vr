@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ThrowingAxeProjectile : MonoBehaviour, IChildsCollisionReceiver
+public class ThrowingAxeProjectile : AxeProjectile, IChildsCollisionReceiver
 {
 
-    public float rotationSpeed = 1f;
-    public float movementSpeed = 1f;
+    // public float rotationSpeed = 1f;
+    // public float movementSpeed = 1f;
     public bool stuckInPlace = false;
 
-    public Transform whatShouldRotate;
-    public float damage = 0f;
+    // public Transform whatShouldRotate;
+    // public float damage = 0f;
 
     private Coroutine destructionCoroutine;
     // Use this for initialization
@@ -20,12 +20,11 @@ public class ThrowingAxeProjectile : MonoBehaviour, IChildsCollisionReceiver
     }
 
     // Update is called once per frame
-    void Update()
+    override public void Update()
     {
         if (!stuckInPlace)
         {
-            this.transform.Translate((Vector3.forward * movementSpeed * Time.unscaledDeltaTime), Space.Self);
-            whatShouldRotate.Rotate(rotationSpeed * Time.unscaledDeltaTime, 0f, 0f);
+            base.Update();
         }   
     }
     public void ReceiveCollisionEnter(Collision collision)
@@ -44,7 +43,7 @@ public class ThrowingAxeProjectile : MonoBehaviour, IChildsCollisionReceiver
         stuckInPlace = true;
         StopCoroutine(this.destructionCoroutine);
         this.transform.parent = collision.transform;
-        // THIS CAN BE REPLACED WITH GetComponentInChildren!.
+        // THIS CAN BE REPLACED WITH GetComponentInChildren!... okay, not really.
         IDamageable damageable = collision.transform.GetComponent(typeof(IDamageable)) as IDamageable;
         if (damageable == null && collision.transform.parent != null)
         {

@@ -15,6 +15,7 @@ public class ThrowingAxeHand : MonoBehaviour
 
     public GameObject axeInHand;
     public Object throwingAxePrefab;
+    public Object explosiveAxePrefab;
 
     private Vector3 initialAxePosition;
     private Vector3 backAxePosition;
@@ -26,12 +27,17 @@ public class ThrowingAxeHand : MonoBehaviour
     public Coroutine showAxeDelayCoroutine;
 
     [SerializeField] private float projectileSpeed = 1f;
-    public float ProjectileSpeed {get; set;}
+
+    private bool explosiveAxe;
+    public bool ExplosiveAxe { get { return this.explosiveAxe; } set { this.explosiveAxe = value; fireAxeParticleEmitter.SetActive(value); } }
+    [SerializeField] private GameObject fireAxeParticleEmitter;
+    public float ProjectileSpeed { get; set; }
 
     void Start()
     {
         this.initialAxePosition = this.axeInHand.transform.localPosition;
         this.backAxePosition = this.initialAxePosition + Vector3.back;
+        ExplosiveAxe = true;
     }
 
     // Update is called once per frame
@@ -76,9 +82,9 @@ public class ThrowingAxeHand : MonoBehaviour
         }));
         //Debug.Log("Shooooootiiiing!!!!");
 
-        GameObject throwingAxe = Instantiate(this.throwingAxePrefab) as GameObject;
+        GameObject throwingAxe = Instantiate((explosiveAxe) ? this.explosiveAxePrefab : this.throwingAxePrefab) as GameObject;
         throwingAxe.transform.SetPositionAndRotation(this.axeInHand.transform.position, Camera.main.transform.rotation);
-        throwingAxe.GetComponent<ThrowingAxeProjectile>().movementSpeed = this.projectileSpeed;
+        throwingAxe.GetComponent<AxeProjectile>().movementSpeed = this.projectileSpeed;
         // throwingAxe.transform.Rota
     }
 

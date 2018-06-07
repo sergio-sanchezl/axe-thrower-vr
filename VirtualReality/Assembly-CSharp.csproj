@@ -51,6 +51,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\ExplosionEffectHandler.cs" />
      <Compile Include="Assets\External Assets\BrokenVector\LowPolySurvivalEssentials\Example\Scripts\AnimatedFire.cs" />
      <Compile Include="Assets\External Assets\GoogleVR\Demos\Scripts\DemoInputManager.cs" />
      <Compile Include="Assets\External Assets\GoogleVR\Demos\Scripts\DemoSceneManager.cs" />
@@ -203,8 +204,10 @@
      <Compile Include="Assets\Scripts\Target Spawner\EntityWithProbability.cs" />
      <Compile Include="Assets\Scripts\Target Spawner\TargetSpawner.cs" />
      <Compile Include="Assets\Scripts\TextAndAltText.cs" />
+     <Compile Include="Assets\Scripts\Throwing Axe Projectiles\AxeProjectile.cs" />
+     <Compile Include="Assets\Scripts\Throwing Axe Projectiles\ExplosiveAxeProjectile.cs" />
+     <Compile Include="Assets\Scripts\Throwing Axe Projectiles\ThrowingAxeProjectile.cs" />
      <Compile Include="Assets\Scripts\ThrowingAxeHand.cs" />
-     <Compile Include="Assets\Scripts\ThrowingAxeProjectile.cs" />
      <Compile Include="Assets\Scripts\TimerManager.cs" />
      <Compile Include="Assets\Scripts\UI Scaling.cs" />
      <Compile Include="Assets\Scripts\Unused\CollisionTester.cs" />
@@ -226,6 +229,7 @@
      <None Include="Assets\External Assets\GoogleVR\Plugins\Android\AndroidManifest-6DOF.xml" />
      <None Include="Assets\External Assets\GoogleVR\Shaders\Video\VideoUnlitShader.shader" />
      <None Include="Assets\External Assets\GoogleVR\Shaders\GvrUnlitTextureOverlay.shader" />
+     <None Include="Assets\External Assets\SimpleFX\Materials\UnlitVertexColour_Alpha.shader" />
      <None Include="Assets\External Assets\Skybox Shaders\Gradient Skybox.shader" />
      <None Include="Assets\External Assets\Skybox Shaders\Horizontal Skybox.shader" />
      <None Include="Assets\External Assets\GoogleVR\Shaders\GvrControllerReticle.shader" />
