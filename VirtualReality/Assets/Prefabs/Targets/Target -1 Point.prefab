@@ -81,6 +81,7 @@ GameObject:
   - component: {fileID: 114374575912455926}
   - component: {fileID: 114395384171738062}
   - component: {fileID: 82055187365226456}
+  - component: {fileID: 114207708953678742}
   m_Layer: 0
   m_Name: Target -1 Point
   m_TagString: Untagged
@@ -523,6 +524,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sonarElement: {fileID: 114395384171738062}
+--- !u!114 &114207708953678742
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1780176978351212}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 305a599bba58e2541bdcb0da5da5990a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  center: {x: 0, y: 0, z: 0}
+  speed: 20
+  startAngle: 0
+  endAngle: 0
+  secondsMoving: 0
+  totalAngle: 0
+  currentAngle: 0
+  movingToTheRight: 1
 --- !u!114 &114374575912455926
 MonoBehaviour:
   m_ObjectHideFlags: 1
