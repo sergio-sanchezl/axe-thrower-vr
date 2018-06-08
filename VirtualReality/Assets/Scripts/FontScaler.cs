@@ -21,7 +21,7 @@ public class FontScaler : MonoBehaviour
             this.baseFontSize = text.fontSize;
         }
 
-        Debug.Log("teeeexxxxt size: " + text.fontSize);
+        // Debug.Log("teeeexxxxt size: " + text.fontSize);
         if (this.fontScaleManager == null)
         {
             this.fontScaleManager = GameObject.FindGameObjectWithTag("FontScaleManager").GetComponent<FontScaleManager>();
@@ -41,7 +41,7 @@ public class FontScaler : MonoBehaviour
 
     public void Notify()
     {
-        Debug.Log("Font scaler NOTIFY!" + this.fontScaleManager.GetScale());
+        // Debug.Log("Font scaler NOTIFY!" + this.fontScaleManager.GetScale());
         this.text.fontSize = Mathf.RoundToInt(this.fontScaleManager.GetScale() * baseFontSize);
         this.currentSize = this.text.fontSize;
     }

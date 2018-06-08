@@ -48,6 +48,10 @@ public abstract class TargetScript : MonoBehaviour, IDamageable
             yield return null;
         }
         this.audioController.Play();
+        MoveTarget moveTarget = GetComponent<MoveTarget>();
+        if(moveTarget != null) {
+            moveTarget.enabled = true;
+        }
         yield return null;
     }
 
@@ -66,6 +70,15 @@ public abstract class TargetScript : MonoBehaviour, IDamageable
             Destroy(sonarTrigger);
         }
         DisableColliders();
+        
+        Light light = GetComponentInChildren<Light>();
+        light.enabled = false;
+
+        MoveTarget moveTarget = GetComponent<MoveTarget>();
+        if(moveTarget != null) {
+            moveTarget.enabled = false;
+        }
+
         this.targetRigidbody.isKinematic = false;
         this.targetRigidbody.useGravity = true;
         this.targetRigidbody.AddRelativeForce(Vector3.right * 5f, ForceMode.Impulse);

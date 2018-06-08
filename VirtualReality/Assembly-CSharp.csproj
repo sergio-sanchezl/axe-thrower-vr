@@ -51,7 +51,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\ExplosionEffectHandler.cs" />
      <Compile Include="Assets\External Assets\BrokenVector\LowPolySurvivalEssentials\Example\Scripts\AnimatedFire.cs" />
      <Compile Include="Assets\External Assets\GoogleVR\Demos\Scripts\DemoInputManager.cs" />
      <Compile Include="Assets\External Assets\GoogleVR\Demos\Scripts\DemoSceneManager.cs" />
@@ -170,7 +169,6 @@
      <Compile Include="Assets\External Assets\ResonanceAudio\Scripts\ResonanceAudioRoom.cs" />
      <Compile Include="Assets\External Assets\ResonanceAudio\Scripts\ResonanceAudioRoomManager.cs" />
      <Compile Include="Assets\External Assets\ResonanceAudio\Scripts\ResonanceAudioSource.cs" />
-     <Compile Include="Assets\NearbySonarElement.cs" />
      <Compile Include="Assets\Scripts\AccessibilityForUI.cs" />
      <Compile Include="Assets\Scripts\AlternativeText.cs" />
      <Compile Include="Assets\Scripts\AudioController.cs" />
@@ -181,6 +179,7 @@
      <Compile Include="Assets\Scripts\Compass.cs" />
      <Compile Include="Assets\Scripts\CompassArrow.cs" />
      <Compile Include="Assets\Scripts\DestructionScheduler.cs" />
+     <Compile Include="Assets\Scripts\ExplosionEffectHandler.cs" />
      <Compile Include="Assets\Scripts\FontScaleManager.cs" />
      <Compile Include="Assets\Scripts\FontScaler.cs" />
      <Compile Include="Assets\Scripts\GameEndManager.cs" />
@@ -188,6 +187,8 @@
      <Compile Include="Assets\Scripts\HighContrastModeManager.cs" />
      <Compile Include="Assets\Scripts\IChildsCollisionReceiver.cs" />
      <Compile Include="Assets\Scripts\MenuManager.cs" />
+     <Compile Include="Assets\Scripts\MoveTarget.cs" />
+     <Compile Include="Assets\Scripts\NearbySonarElement.cs" />
      <Compile Include="Assets\Scripts\PaletteGetter.cs" />
      <Compile Include="Assets\Scripts\PlayerPrefsWiper.cs" />
      <Compile Include="Assets\Scripts\SceneSwitcher.cs" />
@@ -195,6 +196,7 @@
      <Compile Include="Assets\Scripts\ScoreManager.cs" />
      <Compile Include="Assets\Scripts\SonarElement.cs" />
      <Compile Include="Assets\Scripts\SonarManager.cs" />
+     <Compile Include="Assets\Scripts\SonarRaycaster.cs" />
      <Compile Include="Assets\Scripts\StaticCallsWrapper.cs" />
      <Compile Include="Assets\Scripts\SubtitleManager.cs" />
      <Compile Include="Assets\Scripts\Target Scripts\BonusTarget.cs" />
@@ -217,7 +219,6 @@
      <Compile Include="Assets\Scripts\Unused\test.cs" />
      <Compile Include="Assets\Scripts\Unused\VibrateOnTap.cs" />
      <Compile Include="Assets\Scripts\Unused\VibrationToggler.cs" />
-     <Compile Include="Assets\SonarRaycaster.cs" />
      <None Include="Assets\External Assets\LowPolyWater_Pack\LowPoly Island\Credits.txt" />
      <None Include="Assets\External Assets\GoogleVR\Shaders\GvrUIOverlayFont.shader" />
      <None Include="Assets\External Assets\LowPolyWater_Pack\Shaders\WaterShaded.shader" />
