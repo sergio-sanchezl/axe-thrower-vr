@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4733150390260848}
   m_Layer: 0
-  m_Name: Throwing Axe
+  m_Name: UNUSED Throwing Axe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

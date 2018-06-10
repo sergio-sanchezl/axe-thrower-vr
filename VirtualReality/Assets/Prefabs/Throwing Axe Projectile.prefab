@@ -241,7 +241,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -267,9 +267,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSpeed: 1000
   movementSpeed: 17
-  stuckInPlace: 0
   whatShouldRotate: {fileID: 4664137178465268}
   damage: 5
+  stuckInPlace: 0
 --- !u!114 &114655661774005190
 MonoBehaviour:
   m_ObjectHideFlags: 1

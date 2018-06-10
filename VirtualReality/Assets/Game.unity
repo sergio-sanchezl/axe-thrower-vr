@@ -13434,7 +13434,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeScale: 1
-  weapon: {fileID: 357327371}
 --- !u!4 &1552944804
 Transform:
   m_ObjectHideFlags: 0
@@ -13618,7 +13617,7 @@ MonoBehaviour:
   player: {fileID: 907292807}
   active: 1
   radius: 14.73
-  spawnAngle: 180
+  spawnAngle: 360
   timeBetweenSpawns: 2
   objectsToSpawn:
   - entity: {fileID: 1780176978351212, guid: 3500bd2619bad8a478bbec84b6017633, type: 2}

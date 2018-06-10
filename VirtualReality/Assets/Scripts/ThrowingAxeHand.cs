@@ -37,7 +37,6 @@ public class ThrowingAxeHand : MonoBehaviour
     {
         this.initialAxePosition = this.axeInHand.transform.localPosition;
         this.backAxePosition = this.initialAxePosition + Vector3.back;
-        ExplosiveAxe = true;
     }
 
     // Update is called once per frame

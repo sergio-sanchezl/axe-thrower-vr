@@ -9,14 +9,18 @@ public class ThrowingAxeProjectile : AxeProjectile, IChildsCollisionReceiver
     // public float movementSpeed = 1f;
     public bool stuckInPlace = false;
 
+
     // public Transform whatShouldRotate;
     // public float damage = 0f;
 
     private Coroutine destructionCoroutine;
+
+    private AudioSource audioSource;
     // Use this for initialization
     void Start()
     {
         this.destructionCoroutine = StartCoroutine((this.gameObject.AddComponent(typeof(DestructionScheduler)) as DestructionScheduler).DestroyAfterTime(3f));
+        this.audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -25,7 +29,7 @@ public class ThrowingAxeProjectile : AxeProjectile, IChildsCollisionReceiver
         if (!stuckInPlace)
         {
             base.Update();
-        }   
+        }
     }
     public void ReceiveCollisionEnter(Collision collision)
     {
@@ -34,26 +38,30 @@ public class ThrowingAxeProjectile : AxeProjectile, IChildsCollisionReceiver
         {
             return;
         }
-        whatShouldRotate.GetComponent<BoxCollider>().enabled = false;
-        Destroy(whatShouldRotate.GetComponent<Rigidbody>());
-        Debug.Log("Collision detected!");
-        // We rotate the axe according to the normal of the face of the point of collision.
-        transform.rotation = Quaternion.FromToRotation(Vector3.forward, collision.contacts[0].normal);
-        // now we are stuck in place, so we stop the schedule of the destruction of the axe.
-        stuckInPlace = true;
-        StopCoroutine(this.destructionCoroutine);
-        this.transform.parent = collision.transform;
-        // THIS CAN BE REPLACED WITH GetComponentInChildren!... okay, not really.
-        IDamageable damageable = collision.transform.GetComponent(typeof(IDamageable)) as IDamageable;
-        if (damageable == null && collision.transform.parent != null)
+        if (!stuckInPlace)
         {
-            damageable = collision.transform.parent.gameObject.GetComponent(typeof(IDamageable)) as IDamageable;
+            this.audioSource.Stop();
+            whatShouldRotate.GetComponent<BoxCollider>().enabled = false;
+            Destroy(whatShouldRotate.GetComponent<Rigidbody>());
+            Debug.Log("Collision detected!");
+            // We rotate the axe according to the normal of the face of the point of collision.
+            transform.rotation = Quaternion.FromToRotation(Vector3.forward, collision.contacts[0].normal);
+            // now we are stuck in place, so we stop the schedule of the destruction of the axe.
+            stuckInPlace = true;
+            StopCoroutine(this.destructionCoroutine);
+            this.transform.parent = collision.transform;
+            // THIS CAN BE REPLACED WITH GetComponentInChildren!... okay, not really.
+            IDamageable damageable = collision.transform.GetComponent(typeof(IDamageable)) as IDamageable;
+            if (damageable == null && collision.transform.parent != null)
+            {
+                damageable = collision.transform.parent.gameObject.GetComponent(typeof(IDamageable)) as IDamageable;
+            }
+            if (damageable != null)
+            {
+                damageable.DealDamage(this.damage);
+            }
         }
-        if (damageable != null)
-        {
-            damageable.DealDamage(this.damage);
-        }
-        
+
     }
 
     public void ReceiveCollisionExit(Collision collision)
