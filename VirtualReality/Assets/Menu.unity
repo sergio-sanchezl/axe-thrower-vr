@@ -2484,8 +2484,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1747723533}
-        m_MethodName: ToggleFocusMode
+      - m_Target: {fileID: 492367392}
+        m_MethodName: ChangeMonoStereo
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4712,11 +4712,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1aee95fb6dfe13b4089c9b29018bc08f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tts: {fileID: 1416457850}
   colorizerManager: {fileID: 1167664147}
+  monoStereoSwitcher: {fileID: 663261517}
   minusOnePointTargetColorDisplay: {fileID: 1034264851}
   onePointTargetColorDisplay: {fileID: 1827346866}
   twoPointsTargetColorDisplay: {fileID: 560511484}
   bonusTargetColorDisplay: {fileID: 1764559193}
+  monoStereoDisplay: {fileID: 1593097942}
+  monoStereoAltText: {fileID: 213052951}
 --- !u!4 &492367393
 Transform:
   m_ObjectHideFlags: 0
@@ -6545,6 +6549,47 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 662183243}
+--- !u!1 &663261516
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 663261518}
+  - component: {fileID: 663261517}
+  m_Layer: 0
+  m_Name: Mono Stereo Switcher
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &663261517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 663261516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a94a581ef188e2468be2b51d23e8663, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stereoActivated: 0
+--- !u!4 &663261518
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 663261516}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -7.9311895, y: -0.1617372, z: 12.586826}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 20
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &664541615 stripped
 Transform:
   m_PrefabParentObject: {fileID: 496734, guid: 613c589fa2eafab478cdcd473f3550d4, type: 2}
@@ -11679,7 +11724,7 @@ MonoBehaviour:
     colorKeyString: target_minus_1_point_primary_color
     colorIndex: 5
   oneColor:
-    color: {r: 0.58953285, g: 0.85294116, b: 0.8311418, a: 0}
+    color: {r: 0, g: 0, b: 0, a: 0}
     colorKeyString: target_1_point_primary_color
     colorIndex: 0
   twoColor:

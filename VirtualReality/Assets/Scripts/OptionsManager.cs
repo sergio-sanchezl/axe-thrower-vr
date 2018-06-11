@@ -4,13 +4,16 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class OptionsManager : MonoBehaviour {
-
+	public TextToSpeech tts;
 	public ColorizerManager colorizerManager;
-
+	public MonoStereoSwitcher monoStereoSwitcher;
 	public Image minusOnePointTargetColorDisplay;
 	public Image onePointTargetColorDisplay;
 	public Image twoPointsTargetColorDisplay;
 	public Image bonusTargetColorDisplay;
+
+	public Text monoStereoDisplay;
+	public AlternativeText monoStereoAltText;
 
 	// Use this for initialization
 	void Start () {
@@ -18,11 +21,24 @@ public class OptionsManager : MonoBehaviour {
 		UpdateOnePointTargetColorDisplay();
 		UpdateTwoPointsTargetColorDisplay();
 		UpdateBonusTargetColorDisplay();
+		UpdateMonoStereoDisplay();
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+
+	public void UpdateMonoStereoDisplay() {
+		monoStereoDisplay.text = (this.monoStereoSwitcher.stereoActivated) ? "Estéreo" : "Mono";
+		monoStereoAltText.altText = "Botón: Cambiar modo de audio. Actual: " + ((this.monoStereoSwitcher.stereoActivated) ? "Estéreo" : "Mono");
+	}
+
+	public void ChangeMonoStereo() {
+		bool stereo = this.monoStereoSwitcher.ToggleMonoStereo();
+		UpdateMonoStereoDisplay();
+		string ttsPhrase;
+		if(stereo) {
+			ttsPhrase = "Se ha cambiado el modo de audio a estéreo";
+		} else {
+			ttsPhrase = "Se ha cambiado el modo de audio a mono";
+		}
+		// READ HERE THE TTS PHRASE
 	}
 
 	public void UpdateMinusOnePointTargetColorDisplay() {
