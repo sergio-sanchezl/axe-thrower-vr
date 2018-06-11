@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Colorizer : MonoBehaviour
 {
-	[SerializeField] private Renderer rendererToFetchMaterial;
-	private Material materialToColorize;
+    [SerializeField] private Renderer rendererToFetchMaterial;
+    private Material materialToColorize;
     // Primary color of the target.
     [SerializeField] private Color primaryColor;
 
@@ -17,18 +17,22 @@ public class Colorizer : MonoBehaviour
 
     // Field to look at in PlayerPrefs to get the secondary color for this target.
     [SerializeField] private string secondaryColorField;
+
+    public Color PrimaryColor { get { return this.primaryColor; } set { this.primaryColor = value; if (this.materialToColorize != null) { this.materialToColorize.SetColor("_PrimaryColor", primaryColor); } } }
+    public Color SecondaryColor { get { return this.secondaryColor; } set { this.secondaryColor = value; if (this.materialToColorize != null) { this.materialToColorize.SetColor("_PrimaryColor", secondaryColor); } } }
     // Use this for initialization
     void Start()
     {
-		this.materialToColorize = this.rendererToFetchMaterial.material;
-		this.materialToColorize.SetColor("_PrimaryColor", primaryColor);
-		this.materialToColorize.SetColor("_SecondaryColor", secondaryColor);
+        this.materialToColorize = this.rendererToFetchMaterial.material;
+        // this.materialToColorize.SetColor("_PrimaryColor", primaryColor);
+        this.materialToColorize.SetColor("_SecondaryColor", secondaryColor);
+        LoadColors();
     }
 
     private void LoadColors()
     {
-		this.primaryColor = GetColorFromPlayerPrefs(primaryColorField);
-		// this.secondaryColor = GetColorFromPlayerPrefs(secondaryColorField);
+        this.PrimaryColor = GetColorFromPlayerPrefs(primaryColorField);
+        // this.secondaryColor = GetColorFromPlayerPrefs(secondaryColorField);
     }
 
     private Color GetColorFromPlayerPrefs(string key)
@@ -48,7 +52,7 @@ public class Colorizer : MonoBehaviour
         {
             outputColor[i] = System.Single.Parse(strings[i]);
         }
-		return outputColor;
+        return outputColor;
     }
     public Color GetPrimaryColor()
     {

@@ -13617,7 +13617,7 @@ MonoBehaviour:
   player: {fileID: 907292807}
   active: 1
   radius: 14.73
-  spawnAngle: 360
+  spawnAngle: 180
   timeBetweenSpawns: 2
   objectsToSpawn:
   - entity: {fileID: 1780176978351212, guid: 3500bd2619bad8a478bbec84b6017633, type: 2}

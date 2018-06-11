@@ -176,6 +176,7 @@
      <Compile Include="Assets\Scripts\BonusManager.cs" />
      <Compile Include="Assets\Scripts\CollisionEmitterToParent.cs" />
      <Compile Include="Assets\Scripts\Colorizer.cs" />
+     <Compile Include="Assets\Scripts\ColorizerManager.cs" />
      <Compile Include="Assets\Scripts\Compass.cs" />
      <Compile Include="Assets\Scripts\CompassArrow.cs" />
      <Compile Include="Assets\Scripts\DestructionScheduler.cs" />
@@ -189,6 +190,7 @@
      <Compile Include="Assets\Scripts\MenuManager.cs" />
      <Compile Include="Assets\Scripts\MoveTarget.cs" />
      <Compile Include="Assets\Scripts\NearbySonarElement.cs" />
+     <Compile Include="Assets\Scripts\OptionsManager.cs" />
      <Compile Include="Assets\Scripts\PaletteGetter.cs" />
      <Compile Include="Assets\Scripts\PlayerPrefsWiper.cs" />
      <Compile Include="Assets\Scripts\SceneSwitcher.cs" />
