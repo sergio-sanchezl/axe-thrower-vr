@@ -18,7 +18,7 @@ public class ColorizerManager : MonoBehaviour
     public ColorInfo bonusColor;
 
     // Use this for initialization
-    void Start()
+    void Awake()
     {
 		InitializeColorInfo(minusOneColor);
 		InitializeColorInfo(oneColor);

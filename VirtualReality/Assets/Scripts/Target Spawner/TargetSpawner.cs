@@ -43,6 +43,7 @@ public class TargetSpawner : MonoBehaviour
         this.scoreManager = GameObject.FindGameObjectWithTag("ScoreManager").GetComponent<ScoreManager>();
         PrepareProbabilities();
         StartCoroutine(SpawnLoop());
+        this.spawnAngle = (PlayerPrefs.GetInt("reduced_game_area", 0) == 1) ? 90f : this.spawnAngle;
     }
 
 

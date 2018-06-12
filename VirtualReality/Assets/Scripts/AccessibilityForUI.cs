@@ -25,7 +25,7 @@ public class AccessibilityForUI : MonoBehaviour
 
     private float timeLastPress = 0.0f;
     // time that the input should be press to count as long tap.
-    public float timeDelayThreshold = 1.0f;
+    public float timeDelayThreshold = 0.5f;
     // Use this for initialization
     void OnEnable()
     {
@@ -42,6 +42,7 @@ public class AccessibilityForUI : MonoBehaviour
         Debug.Log("Start called in AccessibilityForUI!");
         this.GetInfoFromElements();
         hasStarted = true;
+        ReadCurrent();
     }
     void OnDisable()
     {
@@ -103,6 +104,8 @@ public class AccessibilityForUI : MonoBehaviour
             if (altText != null)
             {
                 this.textToBeRead[count] = altText.altText;
+                altText.panel = this;
+                altText.index = count;
             }
             else
             {
@@ -124,6 +127,10 @@ public class AccessibilityForUI : MonoBehaviour
 
         GameObject highlightToEnable = this.highlights[currentIndex];
         highlightToEnable.SetActive(true);
+    }
+
+    public void ChangeTextToBeReadByIndex(int index, string text) {
+        this.textToBeRead[index] = text;
     }
 
     public void ShiftIndex(bool forward)
@@ -164,5 +171,9 @@ public class AccessibilityForUI : MonoBehaviour
                 break;
         }
 
+    }
+
+    public void ChangeLongPressDuration(float duration) {
+        this.timeDelayThreshold = duration;
     }
 }

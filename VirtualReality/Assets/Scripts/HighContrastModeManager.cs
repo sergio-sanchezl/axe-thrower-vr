@@ -17,8 +17,9 @@ public class HighContrastModeManager : MonoBehaviour
 		ChangeHighContrastMode(storedValue);
     }
 
-	public void ToggleHighContrastMode() {
+	public bool ToggleHighContrastMode() {
 		ChangeHighContrastMode(!highContrastModeEnabled);
+        return highContrastModeEnabled;
 	}
     public void ChangeHighContrastMode(bool value)
     {

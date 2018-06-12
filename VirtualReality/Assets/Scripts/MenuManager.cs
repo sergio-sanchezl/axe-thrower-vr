@@ -18,6 +18,10 @@ public class MenuManager : MonoBehaviour
     // the elements and then hold to activate them.l
     public bool focusMode;
 
+    public float longerLongPressDuration = 1f;
+    public float shorterLongPressDuration = 0.5f;
+
+    public bool longerLongPressMode;
     void Start()
     {
         raycaster = this.transform.GetComponent<GvrPointerGraphicRaycaster>();
@@ -33,6 +37,8 @@ public class MenuManager : MonoBehaviour
         // TODO: Might be a good idea to check here if user has
         // talkback enabled on his/her phone.
         SetFocusMode(PlayerPrefs.GetInt("focus_mode", 0) == 1);
+        longerLongPressMode = PlayerPrefs.GetInt("longer_long_press_duration", 0) == 1;
+        SetLongPressDuration(longerLongPressMode);
     }
 
     // Hides current panel and changes it to the specified one.
@@ -44,9 +50,10 @@ public class MenuManager : MonoBehaviour
     }
 
     // Change the focus mode to the opposite value.
-    public void ToggleFocusMode()
+    public bool ToggleFocusMode()
     {
         SetFocusMode(!focusMode);
+        return focusMode;
     }
 
     // We change the focus mode, and write it in the player preferences.
@@ -63,6 +70,16 @@ public class MenuManager : MonoBehaviour
         }
 
         raycaster.enabled = !focusMode;
+    }
+
+    public void SetLongPressDuration(bool longer) {
+        SetLongPressDuration((longer) ? longerLongPressDuration : shorterLongPressDuration);
+    }
+    void SetLongPressDuration(float duration) {
+        for (int i = 0; i < panelsScripts.Length; i++)
+        {
+            panelsScripts[i].ChangeLongPressDuration(duration);
+        }
     }
 
 

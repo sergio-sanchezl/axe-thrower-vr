@@ -480,8 +480,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1747723533}
-        m_MethodName: ToggleFocusMode
+      - m_Target: {fileID: 492367392}
+        m_MethodName: ChangeLongPress
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -537,7 +537,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca51ad46bdfc35f44bcd4e522472e24f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  altText: "Cambiar duraci\xF3n de pulsado largo"
+  altText: "Bot\xF3n: Cambiar duraci\xF3n de pulsado largo"
+  panel: {fileID: 0}
+  index: 0
 --- !u!1 &39371406
 GameObject:
   m_ObjectHideFlags: 0
@@ -951,6 +953,47 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 84176426}
+--- !u!1 &95165421
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 95165423}
+  - component: {fileID: 95165422}
+  m_Layer: 0
+  m_Name: Game Area Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &95165422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 95165421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b8800c336cc2a44880f8fa13ea3d3ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reducedArea: 0
+--- !u!4 &95165423
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 95165421}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 11.396562, y: 4.049765, z: -17.617311}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 22
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &99828168
 GameObject:
   m_ObjectHideFlags: 0
@@ -1244,6 +1287,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   altText: "P\xE1gina siguiente"
+  panel: {fileID: 0}
+  index: 0
 --- !u!114 &120068427 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114821054444979788, guid: b1e77360064c32a40b19b6bff50af81c,
@@ -1441,7 +1486,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca51ad46bdfc35f44bcd4e522472e24f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  altText: "Aumentar tama\xF1o de fuente"
+  altText: "Bot\xF3n: Aumentar tama\xF1o de fuente"
+  panel: {fileID: 0}
+  index: 0
 --- !u!114 &136282053
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1481,8 +1528,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 519318242}
-        m_MethodName: IncrementScale
+      - m_Target: {fileID: 492367392}
+        m_MethodName: IncrementFontScale
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2257,6 +2304,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   altText: Cambiar color de diana de 2 puntos
+  panel: {fileID: 0}
+  index: 0
 --- !u!1 &168835911
 GameObject:
   m_ObjectHideFlags: 0
@@ -2542,6 +2591,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   altText: Alternar modo de audio
+  panel: {fileID: 0}
+  index: 0
 --- !u!1 &219909144
 GameObject:
   m_ObjectHideFlags: 0
@@ -4479,8 +4530,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1747723533}
-        m_MethodName: ToggleFocusMode
+      - m_Target: {fileID: 492367392}
+        m_MethodName: ChangeFocusMode
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4537,6 +4588,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   altText: Alternar modo de foco
+  panel: {fileID: 0}
+  index: 0
 --- !u!1001 &470784984
 Prefab:
   m_ObjectHideFlags: 0
@@ -4715,12 +4768,31 @@ MonoBehaviour:
   tts: {fileID: 1416457850}
   colorizerManager: {fileID: 1167664147}
   monoStereoSwitcher: {fileID: 663261517}
+  focusModeManager: {fileID: 1747723533}
+  highContrastModeManager: {fileID: 120068427}
+  gameSpeedManager: {fileID: 1443515033}
+  gameAreaManager: {fileID: 95165422}
+  longPressDurationManager: {fileID: 2044799538}
+  fontScaleManager: {fileID: 519318242}
+  ttsEnabled: 0
   minusOnePointTargetColorDisplay: {fileID: 1034264851}
   onePointTargetColorDisplay: {fileID: 1827346866}
   twoPointsTargetColorDisplay: {fileID: 560511484}
   bonusTargetColorDisplay: {fileID: 1764559193}
   monoStereoDisplay: {fileID: 1593097942}
   monoStereoAltText: {fileID: 213052951}
+  focusModeDisplay: {fileID: 599339580}
+  focusModeAltText: {fileID: 442255512}
+  subtitlesDisplay: {fileID: 1811410040}
+  subtitlesAltText: {fileID: 1294253770}
+  highContrastDisplay: {fileID: 2122707021}
+  highContrastAltText: {fileID: 800051952}
+  gameSpeedDisplay: {fileID: 1410807027}
+  gameSpeedAltText: {fileID: 1247464034}
+  gameAreaDisplay: {fileID: 1710604767}
+  gameAreaAltText: {fileID: 1928630582}
+  longPressDisplay: {fileID: 873820286}
+  longPressAltText: {fileID: 35139818}
 --- !u!4 &492367393
 Transform:
   m_ObjectHideFlags: 0
@@ -4732,7 +4804,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &493336239
 Prefab:
@@ -6355,6 +6427,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   altText: "Reducir tama\xF1o de fuente"
+  panel: {fileID: 0}
+  index: 0
 --- !u!114 &654636749
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6588,7 +6662,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &664541615 stripped
 Transform:
@@ -7820,6 +7894,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   altText: "P\xE1gina anterior"
+  panel: {fileID: 0}
+  index: 0
 --- !u!1001 &797004708
 Prefab:
   m_ObjectHideFlags: 0
@@ -7951,8 +8027,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 120068427}
-        m_MethodName: ToggleHighContrastMode
+      - m_Target: {fileID: 492367392}
+        m_MethodName: ChangeHighContrast
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8009,6 +8085,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   altText: Alternar modo de alto contraste
+  panel: {fileID: 0}
+  index: 0
 --- !u!1 &812075572
 GameObject:
   m_ObjectHideFlags: 0
@@ -8130,6 +8208,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   altText: "Aumentar tama\xF1o de fuente"
+  panel: {fileID: 0}
+  index: 0
 --- !u!114 &813540487
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8317,7 +8397,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Desactivar
+  m_Text: Alternar
 --- !u!222 &816518880
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9103,6 +9183,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   altText: "P\xE1gina siguiente"
+  panel: {fileID: 0}
+  index: 0
 --- !u!1001 &927779153
 Prefab:
   m_ObjectHideFlags: 0
@@ -9889,6 +9971,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   altText: "P\xE1gina anterior"
+  panel: {fileID: 0}
+  index: 0
 --- !u!1 &965525422
 GameObject:
   m_ObjectHideFlags: 0
@@ -11746,7 +11830,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1172177041
 GameObject:
@@ -12639,6 +12723,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   altText: "P\xE1gina siguiente"
+  panel: {fileID: 0}
+  index: 0
 --- !u!1 &1247464029
 GameObject:
   m_ObjectHideFlags: 0
@@ -12716,8 +12802,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1747723533}
-        m_MethodName: ToggleFocusMode
+      - m_Target: {fileID: 492367392}
+        m_MethodName: ChangeGameSpeed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12774,6 +12860,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   altText: Cambiar velocidad de juego
+  panel: {fileID: 0}
+  index: 0
 --- !u!1 &1256041538
 GameObject:
   m_ObjectHideFlags: 0
@@ -13165,8 +13253,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 681101812}
-        m_MethodName: CallToggleSubtitles
+      - m_Target: {fileID: 492367392}
+        m_MethodName: ChangeSubtitles
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13223,6 +13311,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   altText: "Alternar subt\xEDtulos"
+  panel: {fileID: 0}
+  index: 0
 --- !u!1001 &1294859561
 Prefab:
   m_ObjectHideFlags: 0
@@ -14132,7 +14222,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca51ad46bdfc35f44bcd4e522472e24f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  altText: "Reducir tama\xF1o de fuente"
+  altText: "Bot\xF3n: Reducir tama\xF1o de fuente"
+  panel: {fileID: 0}
+  index: 0
 --- !u!114 &1379373952
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14172,8 +14264,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 519318242}
-        m_MethodName: DecrementScale
+      - m_Target: {fileID: 492367392}
+        m_MethodName: DecrementFontScale
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -15106,6 +15198,47 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1440745321}
+--- !u!1 &1443515032
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1443515034}
+  - component: {fileID: 1443515033}
+  m_Layer: 0
+  m_Name: Game Speed Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1443515033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1443515032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec225019c7b2f404a888a87df9af05a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reducedSpeedModeActivated: 0
+--- !u!4 &1443515034
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1443515032}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 11.396562, y: 4.049765, z: -17.617311}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 20
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1444586347
 Prefab:
   m_ObjectHideFlags: 0
@@ -15252,6 +15385,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   altText: Cambiar color de diana de menos un punto
+  panel: {fileID: 0}
+  index: 0
 --- !u!114 &1451709605
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16453,6 +16588,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   altText: "P\xE1gina anterior"
+  panel: {fileID: 0}
+  index: 0
 --- !u!4 &1522079367 stripped
 Transform:
   m_PrefabParentObject: {fileID: 493548, guid: 237fc278131d8dc4c9dd556f706cd958, type: 2}
@@ -18507,6 +18644,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   altText: Cambiar color de diana de un punto
+  panel: {fileID: 0}
+  index: 0
 --- !u!1001 &1727014972
 Prefab:
   m_ObjectHideFlags: 0
@@ -18927,6 +19066,9 @@ MonoBehaviour:
   - {fileID: 509012408}
   currentPanelId: 0
   focusMode: 0
+  longerLongPressDuration: 1
+  shorterLongPressDuration: 0.5
+  longerLongPressMode: 0
 --- !u!1 &1747801089
 GameObject:
   m_ObjectHideFlags: 0
@@ -20631,8 +20773,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1747723533}
-        m_MethodName: ToggleFocusMode
+      - m_Target: {fileID: 492367392}
+        m_MethodName: ChangeGameArea
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -20689,6 +20831,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   altText: Cambiar amplitud de zona de juego
+  panel: {fileID: 0}
+  index: 0
 --- !u!1 &1940403249
 GameObject:
   m_ObjectHideFlags: 0
@@ -21665,6 +21809,48 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2038167603}
+--- !u!1 &2044799537
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 2044799539}
+  - component: {fileID: 2044799538}
+  m_Layer: 0
+  m_Name: Long Press Duration Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2044799538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2044799537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e295b0fc0228687489bbe745e07ad27c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  longerPress: 0
+  menuManager: {fileID: 1747723533}
+--- !u!4 &2044799539
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2044799537}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 11.396562, y: 4.049765, z: -17.617311}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 21
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2055815695
 GameObject:
   m_ObjectHideFlags: 0
@@ -22199,6 +22385,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   altText: Cambiar color de diana de bonus
+  panel: {fileID: 0}
+  index: 0
 --- !u!1 &2122707018
 GameObject:
   m_ObjectHideFlags: 0

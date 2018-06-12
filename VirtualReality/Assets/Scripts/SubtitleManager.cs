@@ -51,8 +51,14 @@ public class SubtitleManager : MonoBehaviour
         yield return null;
     }
 
-    public static void ToggleSubtitles() {
+    public static bool ToggleSubtitles() {
         // We invert the value contained in PlayerPrefs.
-        PlayerPrefs.SetInt("subtitles", PlayerPrefs.GetInt("subtitles", 0) == 0 ? 1 : 0);
+        int value = PlayerPrefs.GetInt("subtitles", 0) == 0 ? 1 : 0; // <- INVERTED!!
+        PlayerPrefs.SetInt("subtitles", value);
+        return value == 0 ? false : true;
+    }
+
+    public static bool AreSubtitlesEnabled() {
+        return PlayerPrefs.GetInt("subtitles", 0) == 0 ? false : true;
     }
 }
