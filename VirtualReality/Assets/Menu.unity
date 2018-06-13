@@ -3073,7 +3073,7 @@ RectTransform:
   - {fileID: 1118395961}
   - {fileID: 1423931487}
   - {fileID: 641033672}
-  - {fileID: 1260043391}
+  - {fileID: 1321225721}
   - {fileID: 2116844663}
   - {fileID: 1349333935}
   m_Father: {fileID: 1747723531}
@@ -3103,12 +3103,13 @@ MonoBehaviour:
   - {fileID: 1118395960}
   - {fileID: 442255507}
   - {fileID: 1294253765}
-  - {fileID: 213052946}
+  - {fileID: 1117782135}
   - {fileID: 906021405}
   - {fileID: 914451106}
   - {fileID: 340851038}
   textToBeRead: []
   highlights: []
+  scanModeActivated: 0
   timeDelayThreshold: 0.5
 --- !u!114 &286125185
 MonoBehaviour:
@@ -4768,7 +4769,7 @@ MonoBehaviour:
   tts: {fileID: 1416457850}
   colorizerManager: {fileID: 1167664147}
   monoStereoSwitcher: {fileID: 663261517}
-  focusModeManager: {fileID: 1747723533}
+  menuManager: {fileID: 1747723533}
   highContrastModeManager: {fileID: 120068427}
   gameSpeedManager: {fileID: 1443515033}
   gameAreaManager: {fileID: 95165422}
@@ -4793,6 +4794,8 @@ MonoBehaviour:
   gameAreaAltText: {fileID: 1928630582}
   longPressDisplay: {fileID: 873820286}
   longPressAltText: {fileID: 35139818}
+  sweepModeDisplay: {fileID: 1096068785}
+  sweepModeAltText: {fileID: 1117782140}
 --- !u!4 &492367393
 Transform:
   m_ObjectHideFlags: 0
@@ -4992,12 +4995,13 @@ MonoBehaviour:
   - {fileID: 136282050}
   - {fileID: 1379373950}
   - {fileID: 35139813}
-  - {fileID: 1117782135}
+  - {fileID: 213052946}
   - {fileID: 962284580}
   - {fileID: 1949781849}
   - {fileID: 438536569}
   textToBeRead: []
   highlights: []
+  scanModeActivated: 0
   timeDelayThreshold: 0.5
 --- !u!114 &509012410
 MonoBehaviour:
@@ -5045,7 +5049,7 @@ RectTransform:
   - {fileID: 517825167}
   - {fileID: 1881471076}
   - {fileID: 162899501}
-  - {fileID: 1321225721}
+  - {fileID: 1260043391}
   - {fileID: 16415518}
   - {fileID: 779958713}
   m_Father: {fileID: 1747723531}
@@ -5775,7 +5779,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Activada
+  m_Text: Desactivada
 --- !u!222 &599339581
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6878,7 +6882,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 705013704}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.88}
   m_LocalScale: {x: 0.3039323, y: 0.30393228, z: 0.15185748}
   m_Children:
   - {fileID: 1759813916}
@@ -6887,8 +6891,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 18.561377, y: 2}
-  m_SizeDelta: {x: 104.936, y: 9.966}
+  m_AnchoredPosition: {x: 18.333872, y: 1.9800007}
+  m_SizeDelta: {x: 124.88, y: 9.966}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &705013706
 CanvasRenderer:
@@ -10036,6 +10040,7 @@ MonoBehaviour:
   - {fileID: 544978156}
   textToBeRead: []
   highlights: []
+  scanModeActivated: 0
   timeDelayThreshold: 0.5
 --- !u!114 &965525425
 MonoBehaviour:
@@ -11025,7 +11030,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1096068782}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.00026701816}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1958202214}
@@ -11033,8 +11038,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -0.36, y: -0}
+  m_SizeDelta: {x: 0.71, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1096068784
 MonoBehaviour:
@@ -11083,7 +11088,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Amplia
+  m_Text: No activa
 --- !u!222 &1096068786
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11179,8 +11184,9 @@ GameObject:
   - component: {fileID: 1117782139}
   - component: {fileID: 1117782138}
   - component: {fileID: 1117782137}
+  - component: {fileID: 1117782140}
   m_Layer: 5
-  m_Name: ????? Button
+  m_Name: Sweep mode Button
   m_TagString: Button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11244,8 +11250,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1747723533}
-        m_MethodName: ToggleFocusMode
+      - m_Target: {fileID: 492367392}
+        m_MethodName: ChangeSweepMode
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11290,6 +11296,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1117782135}
+--- !u!114 &1117782140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1117782135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca51ad46bdfc35f44bcd4e522472e24f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  altText: 
+  panel: {fileID: 0}
+  index: 0
 --- !u!1 &1118395960
 GameObject:
   m_ObjectHideFlags: 0
@@ -12974,20 +12994,20 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1260043390}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.000040548704}
-  m_LocalScale: {x: 1, y: 1.0000001, z: 0.99999976}
+  m_LocalPosition: {x: 0, y: 0, z: 0.000023664596}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 820219544}
   - {fileID: 25815869}
   - {fileID: 213052947}
   - {fileID: 2063897806}
   - {fileID: 347653507}
-  m_Father: {fileID: 286125183}
+  m_Father: {fileID: 509012412}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 0.000011444092, y: -7.321374}
+  m_AnchoredPosition: {x: 0.000047115875, y: -7.3213735}
   m_SizeDelta: {x: 0, y: 4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!4 &1261299724 stripped
@@ -13536,7 +13556,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1321225721}
   m_Layer: 5
-  m_Name: ????? options
+  m_Name: Sweep mode options
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13549,15 +13569,15 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1321225720}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.000040548704}
-  m_LocalScale: {x: 1, y: 1.0000001, z: 0.99999976}
+  m_LocalPosition: {x: 0, y: 0, z: -0.00008820572}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 705013705}
   - {fileID: 1958202214}
   - {fileID: 1117782136}
   - {fileID: 1913187291}
   - {fileID: 1316598237}
-  m_Father: {fileID: 509012412}
+  m_Father: {fileID: 286125183}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
@@ -17852,6 +17872,7 @@ MonoBehaviour:
   - {fileID: 1425352557}
   textToBeRead: []
   highlights: []
+  scanModeActivated: 0
   timeDelayThreshold: 0.5
 --- !u!114 &1637021510
 MonoBehaviour:
@@ -19066,6 +19087,7 @@ MonoBehaviour:
   - {fileID: 509012408}
   currentPanelId: 0
   focusMode: 0
+  sweepModeEnabled: 0
   longerLongPressDuration: 1
   shorterLongPressDuration: 0.5
   longerLongPressMode: 0
@@ -19447,7 +19469,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Zona de juego:'
+  m_Text: "Navegaci\xF3n de barrido:"
 --- !u!222 &1759813919
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -20204,6 +20226,7 @@ MonoBehaviour:
   - {fileID: 1927320300}
   textToBeRead: []
   highlights: []
+  scanModeActivated: 0
   timeDelayThreshold: 0.5
 --- !u!114 &1886534674
 MonoBehaviour:
@@ -21288,7 +21311,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1958202213}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.000040548704}
+  m_LocalPosition: {x: 0, y: 0, z: -0}
   m_LocalScale: {x: 0.30393222, y: 0.30393225, z: 0.15185744}
   m_Children:
   - {fileID: 1096068783}
@@ -21297,8 +21320,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 46.029, y: 2}
-  m_SizeDelta: {x: 53.955, y: 9.966}
+  m_AnchoredPosition: {x: 46.494, y: 2}
+  m_SizeDelta: {x: 50.893, y: 9.966}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1958202215
 CanvasRenderer:
@@ -21547,6 +21570,7 @@ MonoBehaviour:
   - {fileID: 1463590421}
   textToBeRead: []
   highlights: []
+  scanModeActivated: 0
   timeDelayThreshold: 0.5
 --- !u!114 &2001744308
 MonoBehaviour:

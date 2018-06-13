@@ -8,7 +8,7 @@ public class OptionsManager : MonoBehaviour
     public TextToSpeech tts;
     public ColorizerManager colorizerManager;
     public MonoStereoSwitcher monoStereoSwitcher;
-    public MenuManager focusModeManager;
+    public MenuManager menuManager;
     public HighContrastModeManager highContrastModeManager;
     public GameSpeedManager gameSpeedManager;
     public GameAreaManager gameAreaManager;
@@ -41,7 +41,8 @@ public class OptionsManager : MonoBehaviour
     public Text longPressDisplay;
     public AlternativeText longPressAltText;
 
-
+    public Text sweepModeDisplay;
+    public AlternativeText sweepModeAltText;
 
 
 
@@ -59,6 +60,7 @@ public class OptionsManager : MonoBehaviour
         UpdateLongPressDisplay();
         UpdateSubtitlesDisplay();
         UpdateFocusModeDisplay();
+        UpdateSweepModeDisplay();
     }
 
     public void ReadPhrase(string phrase)
@@ -68,6 +70,32 @@ public class OptionsManager : MonoBehaviour
             tts.Speak(phrase);
         }
     }
+
+    public void ChangeSweepMode()
+    {
+        bool active = this.menuManager.ToggleSweepMode();
+        UpdateSweepModeDisplay();
+        UpdateFocusModeDisplay();
+        string ttsPhrase;
+        if (active)
+        {
+            ttsPhrase = "Se ha activado el modo de barrido";
+        }
+        else
+        {
+            ttsPhrase = "Se ha desactivado el modo de barrido";
+        }
+        ReadPhrase(ttsPhrase);
+    }
+
+    public void UpdateSweepModeDisplay()
+    {
+        string status = (this.menuManager.sweepModeEnabled) ? "Activado" : "No activado";
+        this.ttsEnabled = this.menuManager.focusMode || this.menuManager.sweepModeEnabled;
+        sweepModeDisplay.text = status;
+        sweepModeAltText.ChangeAltTextAndNotifyPanel("Botón: Alternar modo de navegación por barrido. Actual: " + status);
+    }
+
     public void ChangeHighContrast()
     {
         bool active = this.highContrastModeManager.ToggleHighContrastMode();
@@ -86,7 +114,7 @@ public class OptionsManager : MonoBehaviour
 
     public void UpdateHighContrastDisplay()
     {
-        string status = (this.highContrastModeManager.highContrastModeEnabled) ? "Activado" : "Desactivado";
+        string status = (this.highContrastModeManager.highContrastModeEnabled) ? "Activado" : "No activado";
         highContrastDisplay.text = status;
         highContrastAltText.ChangeAltTextAndNotifyPanel("Botón: Alternar modo de alto contraste. Actual: " + status);
     }
@@ -158,7 +186,7 @@ public class OptionsManager : MonoBehaviour
     }
     public void UpdateSubtitlesDisplay()
     {
-        string status = (SubtitleManager.AreSubtitlesEnabled()) ? "Activados" : "Desactivados";
+        string status = (SubtitleManager.AreSubtitlesEnabled()) ? "Activados" : "No activados";
         subtitlesDisplay.text = status;
         subtitlesAltText.ChangeAltTextAndNotifyPanel("Botón: Alternar subtítulos. Actual: " + status);
     }
@@ -179,16 +207,17 @@ public class OptionsManager : MonoBehaviour
     }
     public void UpdateFocusModeDisplay()
     {
-        string status = (this.focusModeManager.focusMode) ? "Activado" : "Desactivado";
-        this.ttsEnabled = this.focusModeManager.focusMode; // options' menu local TTS will be ON if the focus mode is enabled.
+        string status = (this.menuManager.focusMode) ? "Activado" : "No activado";
+        this.ttsEnabled = this.menuManager.focusMode || this.menuManager.sweepModeEnabled; // options' menu local TTS will be ON if either the focus or sweep modes are enabled.
         focusModeDisplay.text = status;
         focusModeAltText.ChangeAltTextAndNotifyPanel("Botón: Alternar modo de navegación por foco. Actual: " + status);
     }
 
     public void ChangeFocusMode()
     {
-        bool focusMode = this.focusModeManager.ToggleFocusMode();
+        bool focusMode = this.menuManager.ToggleFocusMode();
         UpdateFocusModeDisplay();
+        UpdateSweepModeDisplay();
         string ttsPhrase;
         if (focusMode)
         {

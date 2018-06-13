@@ -17,6 +17,9 @@ public class AccessibilityForUI : MonoBehaviour
     public string[] textToBeRead;
     public GameObject[] highlights;
 
+    public bool scanModeActivated;
+    public Coroutine scanModeCoroutine;
+
     private int lengthOfElements;
 
     // variable to check inside 'OnEnable' if the 'Start' script has been
@@ -26,6 +29,8 @@ public class AccessibilityForUI : MonoBehaviour
     private float timeLastPress = 0.0f;
     // time that the input should be press to count as long tap.
     public float timeDelayThreshold = 0.5f;
+
+    private float timeBetweenAutomaticFocusChange = 6.5f;
     // Use this for initialization
     void OnEnable()
     {
@@ -35,6 +40,7 @@ public class AccessibilityForUI : MonoBehaviour
             GameObject highlightToEnable = this.highlights[currentIndex];
             highlightToEnable.SetActive(true);
             ReadCurrent();
+            SetScanMode(this.scanModeActivated);
         }
     }
     void Start()
@@ -43,43 +49,92 @@ public class AccessibilityForUI : MonoBehaviour
         this.GetInfoFromElements();
         hasStarted = true;
         ReadCurrent();
+        SetScanMode(this.scanModeActivated);
     }
     void OnDisable()
     {
         Debug.Log("On disable in accessibility ui");
         highlights[currentIndex].SetActive(false);
         currentIndex = 0;
+        StopScanMode();
     }
     // Update is called once per frame
     void Update()
-    {   
-        if (Input.GetButtonDown("Fire1") || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began))
+    {
+        if (scanModeActivated)
         {
-            timeLastPress = Time.unscaledTime;
-            // ShiftIndex(true);
-        }
-
-        if (Input.GetButtonUp("Fire1") || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended))
-        {
-
-            if (Time.unscaledTime - timeLastPress > timeDelayThreshold)
+            // if scan mode is activated, then just detect single presses, treating long presses as single.
+            if (Input.GetButtonUp("Fire1") || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended))
             {
-                // Long press.
-                Debug.Log("Long press!");
                 InteractWithCurrent();
             }
-            else
+        }
+        else
+        {
+            // if scan mode is not activated, then we must differentiate between short press and long press.
+            if (Input.GetButtonDown("Fire1") || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began))
             {
-                // Short press.
-                Debug.Log("Short press!");
-                ShiftIndex(true);
+                timeLastPress = Time.unscaledTime;
+                // ShiftIndex(true);
             }
 
-            timeLastPress = Time.unscaledTime;
+            if (Input.GetButtonUp("Fire1") || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended))
+            {
+
+                if (Time.unscaledTime - timeLastPress > timeDelayThreshold)
+                {
+                    // Long press.
+                    // Debug.Log("Long press!");
+                    InteractWithCurrent();
+                }
+                else
+                {
+                    // Short press.
+                    // Debug.Log("Short press!");
+                    ShiftIndex(true);
+                }
+
+                timeLastPress = Time.unscaledTime;
+            }
         }
     }
 
-
+    public void SetScanMode(bool value)
+    {
+        this.scanModeActivated = value;
+        if (this.gameObject.activeInHierarchy)
+        {
+            if (value)
+            {
+                StartScanMode();
+            }
+            else
+            {
+                StopScanMode();
+            }
+        }
+    }
+    public void StopScanMode()
+    {
+        if (this.scanModeCoroutine != null)
+        {
+            StopCoroutine(this.scanModeCoroutine);
+        }
+    }
+    public void StartScanMode()
+    {
+        StopScanMode();
+        this.scanModeCoroutine = StartCoroutine(ScanModeCoroutine());
+    }
+    public IEnumerator ScanModeCoroutine()
+    {
+        yield return new WaitForSecondsRealtime(timeBetweenAutomaticFocusChange);
+        while (true)
+        {
+            ShiftIndex(true);
+            yield return new WaitForSecondsRealtime(timeBetweenAutomaticFocusChange);
+        }
+    }
 
     // We obtain automatically the text to be read when interacting with each element.
     public void GetInfoFromElements()
@@ -129,7 +184,8 @@ public class AccessibilityForUI : MonoBehaviour
         highlightToEnable.SetActive(true);
     }
 
-    public void ChangeTextToBeReadByIndex(int index, string text) {
+    public void ChangeTextToBeReadByIndex(int index, string text)
+    {
         this.textToBeRead[index] = text;
     }
 
@@ -173,7 +229,8 @@ public class AccessibilityForUI : MonoBehaviour
 
     }
 
-    public void ChangeLongPressDuration(float duration) {
+    public void ChangeLongPressDuration(float duration)
+    {
         this.timeDelayThreshold = duration;
     }
 }

@@ -7,7 +7,7 @@ public class TextToSpeech : MonoBehaviour
 {
     void Start()
     {
-       
+
 
     }
     public enum Locale
@@ -22,8 +22,8 @@ public class TextToSpeech : MonoBehaviour
     private Locale _lang;
     public Locale Language { get { return _lang; } set { SetLanguage(value); } }
     private float _pitch, _speed;
-    public float Pitch { get{return _pitch;} set { SetPitch(value); } }
-    public float Speed { get{return _speed;} set { SetSpeed(value); } }
+    public float Pitch { get { return _pitch; } set { SetPitch(value); } }
+    public float Speed { get { return _speed; } set { SetSpeed(value); } }
 
     public delegate void OnErrorCallbackHandler(string error);
     private OnErrorCallbackHandler _callback;
@@ -37,7 +37,7 @@ public class TextToSpeech : MonoBehaviour
         this.Language = language;
         SetLanguage(this.Language);
     }
-    public TextToSpeech(Locale language,float speed,float pitch)
+    public TextToSpeech(Locale language, float speed, float pitch)
     {
         Initialize();
         this.Language = language;
@@ -47,7 +47,7 @@ public class TextToSpeech : MonoBehaviour
         SetSpeed(this.Speed);
         SetPitch(this.Pitch);
     }
-    public void Speak(string toSay,OnErrorCallbackHandler callback)
+    public void Speak(string toSay, OnErrorCallbackHandler callback)
     {
         if (TTSExample == null)
         {
@@ -55,20 +55,26 @@ public class TextToSpeech : MonoBehaviour
         }
         this._callback = callback;
 
+        if (!Application.isEditor)
+        {
+            TTSExample.Call("TTSMEWithCallBack", toSay, gameObject.name, "OnError");
+        }
 
-        TTSExample.Call("TTSMEWithCallBack", toSay, gameObject.name, "OnError");
-       
     }
     public void OnError(string error)
     {
-        if (_callback != null)
+        if (!Application.isEditor)
         {
-            if (error.Length > 0)
+            if (_callback != null)
             {
-                _callback.Invoke(error);
+                if (error.Length > 0)
+                {
+                    _callback.Invoke(error);
+                }
             }
+
+            ShowToast(error);
         }
-        ShowToast(error);
     }
     public void Speak(string toSay)
     {
@@ -77,21 +83,27 @@ public class TextToSpeech : MonoBehaviour
         {
             Initialize();
         }
-
-        TTSExample.Call("TTSME", toSay);
+        if (!Application.isEditor)
+        {
+            TTSExample.Call("TTSME", toSay);
+        }
 
     }
     public void SetLanguage(Locale lan)
     {
         this._lang = lan;
-        string[] Language = new string[] {"UK","US","ES" };
+        string[] Language = new string[] { "UK", "US", "ES" };
         if (TTSExample == null)
         {
             Initialize();
         }
         // TTSExample.Call("SetLang", Language[(int)lan]);
         // TTSExample.Call("SetLang","ES");
-        TTSExample.Call("SetLocale","es","ES");
+        if (!Application.isEditor)
+        {
+            TTSExample.Call("SetLocale", "es", "ES");
+        }
+
     }
     public void SetSpeed(float speed)
     {
@@ -100,7 +112,10 @@ public class TextToSpeech : MonoBehaviour
         {
             Initialize();
         }
-        TTSExample.Set<float>("Speed", speed);
+        if (!Application.isEditor)
+        {
+            TTSExample.Set<float>("Speed", speed);
+        }
     }
     public void SetPitch(float pitch)
     {
@@ -109,10 +124,18 @@ public class TextToSpeech : MonoBehaviour
         {
             Initialize();
         }
-        TTSExample.Set<float>("Pitch", pitch);
+        if (!Application.isEditor)
+        {
+            TTSExample.Set<float>("Pitch", pitch);
+        }
     }
     private void Initialize()
     {
+        if (Application.isEditor)
+        {
+            return;
+        }
+#if UNITY_ANDROID
         if (TTSExample == null)
         {
             using (AndroidJavaClass activityClass = new AndroidJavaClass("com.unity3d.player.UnityPlayer"))
@@ -127,17 +150,18 @@ public class TextToSpeech : MonoBehaviour
                     TTSExample = pluginClass.CallStatic<AndroidJavaObject>("instance");
                     TTSExample.Call("setContext", activityContext);
 
-                  
+
 
                 }
             }
         }
+#endif
 
 
     }
     public void ShowToast(string msg)
     {
-
+#if UNITY_ANDROID
         if (TTSExample == null)
         {
             using (AndroidJavaClass activityClass = new AndroidJavaClass("com.unity3d.player.UnityPlayer"))
@@ -165,6 +189,7 @@ public class TextToSpeech : MonoBehaviour
                 TTSExample.Call("showMessage", msg);
             }));
         }
+#endif
     }
 
 
