@@ -8,23 +8,25 @@ public class BonusManager : MonoBehaviour
     public ScoreManager scoreManager;
     public TimerManager timerManager;
 
-    public ThrowingAxeHand weapon;
+    public WeaponManager weapon;
     Coroutine doubleFireRateCoroutine;
     Coroutine doublePointsCoroutine;
-    Coroutine explosiveAxeBuffCoroutine;
+    Coroutine explosiveBuffCoroutine;
+    Coroutine laserBuffCoroutine;
 
     // in seconds!
-    float doubleFireRateDuration = 15f;
+    float betterFireRateDuration = 15f;
     float doublePointsDuration = 15f;
 
-    float explosiveAxeBuffDuration = 15f;
+    float explosiveBuffDuration = 15f;
+    float laserBuffDuration = 15f;
     int extraSeconds = 30;
     int extraPoints = 15;
 
     public void ExecuteRandomBonus()
     {
-        // 1 inclusive, 6 exclusive: this will yield 1, 2, 3, 4 or 5.
-        int randomNumber = Random.Range(1, 6);
+        // 1 inclusive, 7 exclusive: this will yield 1, 2, 3, 4, 5 or 6.
+        int randomNumber = Random.Range(1, 7);
         switch (randomNumber)
         {
             case 1:
@@ -35,7 +37,7 @@ public class BonusManager : MonoBehaviour
                     StopCoroutine(this.doubleFireRateCoroutine);
                 }
                 // save coroutine reference and execute it.
-                this.doubleFireRateCoroutine = StartCoroutine(DoubleFireRateCoroutine());
+                this.doubleFireRateCoroutine = StartCoroutine(BetterFireRateCoroutine());
                 break;
             case 2:
                 Debug.Log("222 - Double points gain!");
@@ -60,12 +62,22 @@ public class BonusManager : MonoBehaviour
             case 5:
                 Debug.Log("555 - Explosive weapon!");
                 // try to stop the coroutine (if it is null, don't try, that'll be a null exception).
-                if (this.explosiveAxeBuffCoroutine != null)
+                if (this.explosiveBuffCoroutine != null)
                 {
-                    StopCoroutine(this.explosiveAxeBuffCoroutine);
+                    StopCoroutine(this.explosiveBuffCoroutine);
                 }
                 // save coroutine reference and execute it.
-                this.explosiveAxeBuffCoroutine = StartCoroutine(ExplosiveWeaponBuffCoroutine());
+                this.explosiveBuffCoroutine = StartCoroutine(ExplosiveWeaponBuffCoroutine());
+                break;
+            case 6:
+                Debug.Log("666 - Laser weapon!");
+                // try to stop the coroutine (if it is null, don't try, that'll be a null exception).
+                if (this.laserBuffCoroutine != null)
+                {
+                    StopCoroutine(this.laserBuffCoroutine);
+                }
+                // save coroutine reference and execute it.
+                this.laserBuffCoroutine = StartCoroutine(LaserWeaponBuffCoroutine());
                 break;
             default:
                 // do nothing.
@@ -73,26 +85,74 @@ public class BonusManager : MonoBehaviour
         }
     }
 
-    IEnumerator DoubleFireRateCoroutine()
+    void HideDoubleFireRateTimer()
     {
-        weapon.SetFireRateMultiplier(4f);
-        yield return new WaitForSeconds(this.doubleFireRateDuration);
-        weapon.SetFireRateMultiplier(1f);
+
+    }
+
+    void HideDoublePointsTimer()
+    {
+
+    }
+
+    void HideExplosivesTimer()
+    {
+
+    }
+
+    void HideLaserTimer()
+    {
+
+    }
+
+    void StopDoubleFireRateCoroutine()
+    {
+
+    }
+
+    void StopDoublePointsCoroutine()
+    {
+
+    }
+
+    void StopExplosiveWeaponBuffCoroutine()
+    {
+
+    }
+
+    void StopLaserWeaponBuffCoroutine()
+    {
+
+    }
+
+    IEnumerator BetterFireRateCoroutine()
+    {
+        weapon.FireRateMultiplier = 4f;
+        yield return new WaitForSeconds(this.betterFireRateDuration);
+        weapon.FireRateMultiplier = 1f;
     }
 
     IEnumerator DoublePointsCoroutine()
     {
         scoreManager.SetMultiplier(2f);
-        yield return new WaitForSeconds(this.doubleFireRateDuration);
+        yield return new WaitForSeconds(this.doublePointsDuration);
         scoreManager.SetMultiplier(1f);
     }
 
     IEnumerator ExplosiveWeaponBuffCoroutine()
     {
-        weapon.ExplosiveAxe = true;
-        yield return new WaitForSeconds(this.explosiveAxeBuffDuration);
-        weapon.ExplosiveAxe = false;
+        weapon.Explosive = true;
+        yield return new WaitForSeconds(this.explosiveBuffDuration);
+        weapon.Explosive = false;
     }
+
+    IEnumerator LaserWeaponBuffCoroutine()
+    {
+        weapon.UsingLaserWeapon = true;
+        yield return new WaitForSeconds(this.laserBuffDuration);
+        weapon.UsingLaserWeapon = false;
+    }
+
     void AddExtraPoints()
     {
         scoreManager.AddPoints(this.extraPoints);

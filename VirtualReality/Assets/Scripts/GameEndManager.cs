@@ -10,7 +10,7 @@ public class GameEndManager : MonoBehaviour
     [SerializeField] private ScoreManager scoreManager;
     [SerializeField] private TimerManager timerManager;
     [SerializeField] private TargetSpawner targetSpawner;
-    [SerializeField] private GameObject throwingAxeHand;
+    [SerializeField] private GameObject weapon;
 
     [SerializeField] private GameObject compass;
 
@@ -28,7 +28,7 @@ public class GameEndManager : MonoBehaviour
         int recordTime = PlayerPrefs.GetInt("record_time", -1);
         int recordScore = PlayerPrefs.GetInt("record_score", -1);
         targetSpawner.active = false;
-        throwingAxeHand.SetActive(false);
+        weapon.SetActive(false);
         compass.SetActive(false);
         worldTimerScoreContainer.SetActive(false);
         canvas.SetActive(true);

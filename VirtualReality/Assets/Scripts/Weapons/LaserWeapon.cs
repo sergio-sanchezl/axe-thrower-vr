@@ -1,88 +1,96 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class PlayerWeaponScript : MonoBehaviour
+public class LaserWeapon : Weapon
 {
 
     private LineRenderer lr;
     public GameObject bulletSpawner;
     public GameObject movingLight;
 
-    // Timestamp of last shot.
-    private float previouslyFiredTime = 0;
-
-    // Minimum delay between shots.
-    public float fireRate;
-
-    public float damage; // Damage dealt to the hit entity.
-
+    public float explosionDistance;
+    public Object explosionPrefab;
+    [SerializeField] private GameObject fireParticleEmitter;
     void Start()
     {
         lr = bulletSpawner.GetComponent<LineRenderer>();
         lr.positionCount = 2;
+        SetExplosive(this.explosive);
     }
 
-    private void Update()
+    override public void Update()
     {
-        if (Input.GetButtonDown("Fire1") || (Input.touchCount > 0))
-        {
-            if (CanShoot())
-            {
-                Debug.Log("Can shoot!");
-                Shoot();
-            }
-            else
-            {
-                Debug.Log("Cannot shoot yet...");
-            }
-        }
+        base.Update();
     }
 
-    bool CanShoot()
-    {
-        float currentTime = Time.time;
-        Debug.Log("PreviouslyFiredTime: " + previouslyFiredTime);
-        Debug.Log("CurrentTime: " + currentTime);
-        if (Mathf.Abs(currentTime - previouslyFiredTime) >= fireRate)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
 
-    void Shoot()
+    override public void SetExplosive(bool value)
     {
-        float currentTime = Time.time;
-        this.previouslyFiredTime = currentTime;
+        base.SetExplosive(value);
+        this.fireParticleEmitter.SetActive(value);
+    }
+    override protected void Shoot()
+    {
+        base.Shoot();
         bool somethingHit = false;
         Vector3 sourcePosition = bulletSpawner.transform.position;
         Vector3 hitPosition = Vector3.zero;
-        RaycastHit hit;
-        if (Physics.Raycast(bulletSpawner.transform.position, bulletSpawner.transform.forward, out hit, 100, ~(1 << 8)))
+
+        if (explosive)
         {
-            Debug.Log("raycast hit something.");
-            IDamageable hitEntity = hit.transform.gameObject.GetComponent(typeof(IDamageable)) as IDamageable;
-            if (hitEntity == null)
+            Vector3 direction = (bulletSpawner.transform.forward * 100) - bulletSpawner.transform.position;
+            float magnitude = direction.magnitude;
+            Vector3 normalizedDirection = direction / magnitude;
+            Vector3 pointOfExplosion = (normalizedDirection * explosionDistance) + (Vector3.up * 1.5f);
+            GameObject explosion = Instantiate(explosionPrefab, pointOfExplosion, Quaternion.identity) as GameObject;
+            explosion.transform.LookAt(Vector3.zero);
+            hitPosition = bulletSpawner.transform.position + (bulletSpawner.transform.forward * 100);
+
+            explosion.GetComponent<ExplosionEffectHandler>().Radius = 3;
+            Destroy(explosion, 1f);
+            // deal damage in the radius.
+            Collider[] hitColliders = Physics.OverlapSphere(pointOfExplosion, 3, LayerMask.GetMask("Targets"));
+            List<GameObject> alreadyDealtDamage = new List<GameObject>();
+            for (int i = 0; i < hitColliders.Length; i++)
             {
-                hitEntity = hit.transform.parent.gameObject.GetComponent(typeof(IDamageable)) as IDamageable;
+                if (!alreadyDealtDamage.Contains(hitColliders[i].gameObject))
+                {
+                    alreadyDealtDamage.Add(hitColliders[i].gameObject);
+                    TargetScript targetScript = hitColliders[i].transform.GetComponentInParent<TargetScript>();
+                    targetScript.DealDamage(damage);
+                }
+
             }
-            if (hitEntity != null)
-            {
-                hitEntity.DealDamage(this.damage);
-            }
-            somethingHit = true;
-            hitPosition = hit.point;
+
+            LaunchAnimation(sourcePosition, hitPosition, somethingHit, 0.10f);
         }
         else
         {
-            Debug.Log("raycast didn't hit anything...");
-            hitPosition = bulletSpawner.transform.position + (bulletSpawner.transform.forward * 100);
+            RaycastHit hit;
+            if (Physics.Raycast(bulletSpawner.transform.position, bulletSpawner.transform.forward, out hit, 100, ~(1 << 8)))
+            {
+                Debug.Log("raycast hit something.");
+                IDamageable hitEntity = hit.transform.gameObject.GetComponent(typeof(IDamageable)) as IDamageable;
+                if (hitEntity == null)
+                {
+                    hitEntity = hit.transform.parent.gameObject.GetComponent(typeof(IDamageable)) as IDamageable;
+                }
+                if (hitEntity != null)
+                {
+                    hitEntity.DealDamage(this.damage);
+                }
+                somethingHit = true;
+                hitPosition = hit.point;
+            }
+            else
+            {
+                Debug.Log("raycast didn't hit anything...");
+                hitPosition = bulletSpawner.transform.position + (bulletSpawner.transform.forward * 100);
+            }
+
+            LaunchAnimation(sourcePosition, hitPosition, somethingHit, 0.10f);
         }
 
-        LaunchAnimation(sourcePosition, hitPosition, somethingHit, 0.10f);
     }
 
     void LaunchAnimation(Vector3 sourcePosition, Vector3 targetPosition, bool hit, float laserDuration)

@@ -2,16 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ThrowingAxeHand : MonoBehaviour
+public class ThrowingAxeHand : Weapon
 {
-
-    // Timestamp of last shot.
-    private float previouslyFiredTime = 0;
-
-    // Minimum delay between shots.
-    public float fireRate;
-
-    public float damage; // Damage dealt to the hit entity.
 
     public GameObject axeInHand;
     public Object throwingAxePrefab;
@@ -22,71 +14,46 @@ public class ThrowingAxeHand : MonoBehaviour
 
     public float animationTime = 0.12f;
 
-    public float fireRateMultiplier = 1f;
-
     public Coroutine showAxeDelayCoroutine;
 
     [SerializeField] private float projectileSpeed = 1f;
-
-    private bool explosiveAxe;
-    public bool ExplosiveAxe { get { return this.explosiveAxe; } set { this.explosiveAxe = value; fireAxeParticleEmitter.SetActive(value); } }
+    // public bool ExplosiveAxe { get { return this.explosiveAxe; } set { this.explosiveAxe = value; fireAxeParticleEmitter.SetActive(value); } }
     [SerializeField] private GameObject fireAxeParticleEmitter;
     public float ProjectileSpeed { get; set; }
 
+    private bool started;
     void Start()
     {
         this.initialAxePosition = this.axeInHand.transform.localPosition;
         this.backAxePosition = this.initialAxePosition + Vector3.back;
+        SetExplosive(this.explosive);
+        started = true;
     }
 
-    // Update is called once per frame
-    void Update()
+    override public void SetExplosive(bool value)
     {
-        if (Input.GetButtonDown("Fire1") || (Input.touchCount > 0))
-        {
-            if (CanShoot())
-            {
-                //Debug.Log("Can shoot!");
-                Shoot();
-            }
-            else
-            {
-                //Debug.Log("Cannot shoot yet...");
-            }
-        }
+        base.SetExplosive(value);
+        fireAxeParticleEmitter.SetActive(value);
     }
-
-    bool CanShoot()
+    override protected void Shoot()
     {
-        float currentTime = Time.time;
-        //Debug.Log("PreviouslyFiredTime: " + previouslyFiredTime);
-        //Debug.Log("CurrentTime: " + currentTime);
-        if (Mathf.Abs(currentTime - previouslyFiredTime) >= fireRate / this.fireRateMultiplier)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
-    void Shoot()
-    {
-        float currentTime = Time.time;
-        this.previouslyFiredTime = currentTime;
+        base.Shoot();
         HideAxe();
         this.showAxeDelayCoroutine = StartCoroutine(DelayCodeExecution(fireRate / this.fireRateMultiplier, (int i) =>
         {
             ShowAxe();
         }));
-        //Debug.Log("Shooooootiiiing!!!!");
 
-        GameObject throwingAxe = Instantiate((explosiveAxe) ? this.explosiveAxePrefab : this.throwingAxePrefab) as GameObject;
+        GameObject throwingAxe = Instantiate((explosive) ? this.explosiveAxePrefab : this.throwingAxePrefab) as GameObject;
         throwingAxe.transform.SetPositionAndRotation(this.axeInHand.transform.position, Camera.main.transform.rotation);
         throwingAxe.GetComponent<AxeProjectile>().movementSpeed = this.projectileSpeed;
-        // throwingAxe.transform.Rota
     }
 
+    void OnEnable() {
+        if(started) {
+            ShowAxe();
+        }
+    }
     void HideAxe()
     {
         //Debug.Log("HideAxe() called");
@@ -123,13 +90,13 @@ public class ThrowingAxeHand : MonoBehaviour
         yield return null;
     }
 
-    public void SetFireRateMultiplier(float multiplier)
+    override public void SetFireRateMultiplier(float multiplier)
     {
         Debug.Log("Setting FireRateMultiplier to " + multiplier);
         // The multiplier before applying any changes.
         float previousMultiplier = this.fireRateMultiplier;
         // The new multiplier is applied.
-        this.fireRateMultiplier = multiplier;
+        base.SetFireRateMultiplier(multiplier);
         // some checks here, to check if when changing the multiplier the 
         // weapon should be already seen, or recalculate the time to make it appear again.
 
@@ -154,13 +121,20 @@ public class ThrowingAxeHand : MonoBehaviour
             if (timeFireRateMultiplierChanged < newTimeToShowAxe)
             {
                 // If we don't have to show the axe yet but we have to reschedule the show time, do so.
-                StopCoroutine(this.showAxeDelayCoroutine);
+                if (this.showAxeDelayCoroutine != null)
+                {
+                    StopCoroutine(this.showAxeDelayCoroutine);
+                }
                 // Schedule the ShowAxe at the proper time, taking into account
                 // the time that the axe has been hidden and the new time.
-                this.showAxeDelayCoroutine = StartCoroutine(DelayCodeExecution(newTimeToShowAxe - timeFireRateMultiplierChanged, (int i) =>
+                if (this.isActiveAndEnabled)
+                {
+                    this.showAxeDelayCoroutine = StartCoroutine(DelayCodeExecution(newTimeToShowAxe - timeFireRateMultiplierChanged, (int i) =>
                 {
                     ShowAxe();
                 }));
+                }
+
             }
         }
     }
