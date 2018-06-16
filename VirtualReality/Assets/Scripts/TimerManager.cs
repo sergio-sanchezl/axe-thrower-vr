@@ -18,6 +18,9 @@ public class TimerManager : MonoBehaviour
     // UI element for the timer value to be displayed. 
     public Text timerText;
 
+    public GameObject timerContainer;
+    public UnityEngine.Object fadingTextPrefab;
+
     [SerializeField] private GameEndManager gameEndManager;
     void Start()
     {
@@ -71,9 +74,21 @@ public class TimerManager : MonoBehaviour
         return string.Format("{0:D2}:{1:D2}", time.Minutes, time.Seconds);
     }
 
+    string ParseSecondsToStringShort(int seconds)
+    {
+        TimeSpan time = TimeSpan.FromSeconds(seconds);
+        return string.Format("{0:D1}:{1:D2}", time.Minutes, time.Seconds);
+    }
+
     internal void ExtendTime(int extraSeconds)
     {
         this.timerEnd += extraSeconds;
+        // Display the UI element that indicates how many points we have earned with this call.
+        GameObject fadingText = Instantiate(fadingTextPrefab) as GameObject;
+        FadingMovingText fadingTextScript = fadingText.GetComponent<FadingMovingText>();
+        fadingTextScript.value = (extraSeconds >= 0) ? "+" + ParseSecondsToStringShort(extraSeconds) : "-" + ParseSecondsToStringShort(extraSeconds);
+        fadingTextScript.positive = extraSeconds >= 0;
+        fadingText.transform.SetParent(timerContainer.transform, false);
         UpdateTimer();
     }
 

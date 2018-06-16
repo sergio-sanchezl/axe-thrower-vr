@@ -12,6 +12,9 @@ public class ScoreManager : MonoBehaviour
     public Text pointsMarker;
 
     public float pointsMultiplier = 1f;
+
+    public Object fadingTextPrefab;
+    public GameObject scoreContainer;
     // Use this for initialization
     void Start()
     {
@@ -30,9 +33,18 @@ public class ScoreManager : MonoBehaviour
         // If we have to use the multiplier, then multiply and ceil the 
         // points to add by the multiplier.
         Debug.Log("pointsToAdd: " + pointsToAdd + ", applying multiplier: " + (pointsToAdd * pointsMultiplier) + ", ceil to int: " + Mathf.CeilToInt(pointsToAdd * pointsMultiplier));
-        this.points += (useMultiplier) ? Mathf.CeilToInt(pointsToAdd * pointsMultiplier) : pointsToAdd;
+        int addedPoints = (useMultiplier) ? Mathf.CeilToInt(pointsToAdd * pointsMultiplier) : pointsToAdd;
+        this.points += addedPoints;
         // Update the UI points' display
         this.pointsMarker.text = "" + this.points;
+
+        // Display the UI element that indicates how many points we have earned with this call.
+        GameObject fadingText = Instantiate(fadingTextPrefab) as GameObject;
+        FadingMovingText fadingTextScript = fadingText.GetComponent<FadingMovingText>();
+        fadingTextScript.value = (addedPoints >= 0) ? "+" + addedPoints : "" + addedPoints;
+        fadingTextScript.positive = addedPoints >= 0;
+        fadingText.transform.SetParent(scoreContainer.transform, false);
+
         // 
         if (speechEnabled && tts != null)
         {

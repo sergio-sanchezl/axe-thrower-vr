@@ -169,6 +169,7 @@
      <Compile Include="Assets\External Assets\ResonanceAudio\Scripts\ResonanceAudioRoom.cs" />
      <Compile Include="Assets\External Assets\ResonanceAudio\Scripts\ResonanceAudioRoomManager.cs" />
      <Compile Include="Assets\External Assets\ResonanceAudio\Scripts\ResonanceAudioSource.cs" />
+     <Compile Include="Assets\FadingMovingText.cs" />
      <Compile Include="Assets\Scripts\AccessibilityForUI.cs" />
      <Compile Include="Assets\Scripts\AlternativeText.cs" />
      <Compile Include="Assets\Scripts\AudioController.cs" />
@@ -216,7 +217,6 @@
      <Compile Include="Assets\Scripts\Throwing Axe Projectiles\ExplosiveAxeProjectile.cs" />
      <Compile Include="Assets\Scripts\Throwing Axe Projectiles\ThrowingAxeProjectile.cs" />
      <Compile Include="Assets\Scripts\TimerManager.cs" />
-     <Compile Include="Assets\Scripts\UI Scaling.cs" />
      <Compile Include="Assets\Scripts\Unused\CollisionTester.cs" />
      <Compile Include="Assets\Scripts\Unused\InteractiveCube.cs" />
      <Compile Include="Assets\Scripts\Unused\RotateSelf.cs" />

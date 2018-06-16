@@ -82,6 +82,7 @@ public class TextToSpeech : MonoBehaviour
         if (TTSExample == null)
         {
             Initialize();
+            SetSpeed(1.5f);
         }
         if (!Application.isEditor)
         {
