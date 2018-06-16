@@ -17,7 +17,9 @@ public class TargetSpawner : MonoBehaviour
     // angle of the arc
     public float spawnAngle = 180;
 
-    // time to wait until spawning the next entity.
+    [SerializeField] private float lowerAngle;
+    [SerializeField] private float higherAngle;
+    // time to wait  until spawning the next entity.
     public float timeBetweenSpawns;
 
     // entities to spawn. will be randomly picked, for now.
@@ -46,12 +48,6 @@ public class TargetSpawner : MonoBehaviour
         this.spawnAngle = (PlayerPrefs.GetInt("reduced_game_area", 0) == 1) ? 90f : this.spawnAngle;
     }
 
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
     // loop. wait for the time between spawns, and then spawn the entity.
     IEnumerator SpawnLoop()
     {
@@ -96,25 +92,21 @@ public class TargetSpawner : MonoBehaviour
         // compute a angle offset. this will ensure that the arc's center is always facing the player's initial orientation.
         float angleOffset = (180 - this.spawnAngle) / 2f;
         // The lower angle shall be at the offset + 0. defines the left side of the arc.
-        float lowerAngle = angleOffset;
+        lowerAngle = angleOffset;
         // The higher angle shall be at the offset + angle. defines the right side of the arc.
-        float higherAngle = this.spawnAngle + angleOffset;
+        higherAngle = this.spawnAngle + angleOffset;
         // chooses a random angle between the lower and the higher, i.e. a random point in the arc.
         float angle = Random.Range(lowerAngle, higherAngle);
         // does math magic to translate the angle to a point of a radius 1 circunference.
         Vector3 randomCircle = new Vector3(Mathf.Cos(angle * Mathf.Deg2Rad), 0, Mathf.Sin(angle * Mathf.Deg2Rad));
         // multiplies the coordinate of the radius 1 circunference by the radius to obtain the coordinate in the actual circunference.
         Vector3 worldPos = transform.TransformPoint(randomCircle * radius);
-        // Vector3 position = this.transform.position;
-        // float randomX = Random.Range(position.x - zoneWidth / 2, position.x + zoneWidth / 2);
-        // float randomZ = (this.positionCurve.Evaluate(Mathf.InverseLerp(position.x - zoneWidth / 2, position.x + zoneWidth / 2, randomX)) * zoneDepth) + (position.z - zoneDepth/2);
-        // float randomZ = Random.Range(position.z - zoneDepth / 2, position.z + zoneDepth / 2);
-        // Vector3 objectPosition = new Vector3(randomX, position.y, randomZ);
 
         // set the gameobject (entity) position and look at the player.
         spawnedObject.transform.position = worldPos;
         spawnedObject.transform.LookAt(player.transform);
 
+        AttachMoveComponent(spawnedObject, angle);
         // we get the Target Script. we know all entities are targets and so, contain this script.
         TargetScript ts = spawnedObject.GetComponent<TargetScript>();
         if (ts != null)
@@ -128,6 +120,7 @@ public class TargetSpawner : MonoBehaviour
                 ((BonusTarget)ts).bonusManager = this.bonusManager;
             }
 
+            ts.timeToHide = 90f;
             ts.player = this.player.transform;
             float halfAngle = (lowerAngle + higherAngle) / 2f;
             //first sector. lerp from A0 (lower angle) to A1 (higher angle) (A0 -> min height, A1 -> max height);
@@ -144,7 +137,45 @@ public class TargetSpawner : MonoBehaviour
         }
     }
 
+    // attaches the MoveTarget component to the GameObject, configuring its angle of movement and speed.
+    private void AttachMoveComponent(GameObject obj, float angle) {
+        MoveTarget moveTarget = obj.AddComponent(typeof (MoveTarget)) as MoveTarget;
+        // script must be disabled. the target itself will enable it after appearing.
+        moveTarget.enabled = false;
 
+        float totalAngle = 90f;
+        float startAngle;
+        float endAngle;
+        if(angle - lowerAngle < (totalAngle / 2) && higherAngle - angle < (totalAngle / 2)) {
+            // the total angle is constrained by both limit angles.
+            // set the angles to be as big as the difference between the limits and its actual angle.
+            endAngle = angle - lowerAngle;
+            startAngle = higherAngle - angle;
+        } else if (angle - lowerAngle < (totalAngle / 2)) {
+            // the total angle is only constrained by the lower angle.
+            // set the start angle to be the difference between the angle and the lower angle, and add the remaining
+            // to the other half of the total angle for the end angle.
+            endAngle = angle - lowerAngle;
+            startAngle = ((totalAngle / 2) - (angle - lowerAngle)) + (totalAngle / 2);
+        } else if (higherAngle - angle < (totalAngle / 2)) {
+            // the total angle is only constrained by the higher angle.
+            // set the end angle to be the difference between the angle and the higher angle, and add the remaining
+            // to the other half of the total angle for the start angle.
+            endAngle = ((totalAngle / 2) - (higherAngle - angle)) + (totalAngle / 2);
+            startAngle = higherAngle - angle;
+        } else {
+            // the total angle is not constrained by any angle.
+            // simply set the half of the total angle into the start and end angles of the script.
+            startAngle = totalAngle / 2;
+            endAngle = totalAngle / 2;
+        }
+
+        moveTarget.startAngle = startAngle;
+        moveTarget.endAngle = endAngle;
+
+        Debug.Log("A: " + angle + " LA: " + lowerAngle + " HA: " + higherAngle + " TA: " + totalAngle + " SA: " + startAngle + " EA: " + endAngle);
+        moveTarget.secondsMoving = 5;
+    }
     // we draw the arc and the lines that represent it as gizmos in the editor, for debugging purposes.
     private void OnDrawGizmos()
     {

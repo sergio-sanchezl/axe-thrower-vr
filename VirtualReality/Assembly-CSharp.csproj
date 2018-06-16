@@ -169,7 +169,6 @@
      <Compile Include="Assets\External Assets\ResonanceAudio\Scripts\ResonanceAudioRoom.cs" />
      <Compile Include="Assets\External Assets\ResonanceAudio\Scripts\ResonanceAudioRoomManager.cs" />
      <Compile Include="Assets\External Assets\ResonanceAudio\Scripts\ResonanceAudioSource.cs" />
-     <Compile Include="Assets\FadingMovingText.cs" />
      <Compile Include="Assets\Scripts\AccessibilityForUI.cs" />
      <Compile Include="Assets\Scripts\AlternativeText.cs" />
      <Compile Include="Assets\Scripts\AudioController.cs" />
@@ -182,6 +181,7 @@
      <Compile Include="Assets\Scripts\CompassArrow.cs" />
      <Compile Include="Assets\Scripts\DestructionScheduler.cs" />
      <Compile Include="Assets\Scripts\ExplosionEffectHandler.cs" />
+     <Compile Include="Assets\Scripts\FadingMovingText.cs" />
      <Compile Include="Assets\Scripts\FontScaleManager.cs" />
      <Compile Include="Assets\Scripts\FontScaler.cs" />
      <Compile Include="Assets\Scripts\GameAreaManager.cs" />
@@ -223,10 +223,10 @@
      <Compile Include="Assets\Scripts\Unused\test.cs" />
      <Compile Include="Assets\Scripts\Unused\VibrateOnTap.cs" />
      <Compile Include="Assets\Scripts\Unused\VibrationToggler.cs" />
+     <Compile Include="Assets\Scripts\WeaponManager.cs" />
      <Compile Include="Assets\Scripts\Weapons\LaserWeapon.cs" />
      <Compile Include="Assets\Scripts\Weapons\ThrowingAxeHand.cs" />
      <Compile Include="Assets\Scripts\Weapons\Weapon.cs" />
-     <Compile Include="Assets\WeaponManager.cs" />
      <None Include="Assets\External Assets\LowPolyWater_Pack\LowPoly Island\Credits.txt" />
      <None Include="Assets\External Assets\GoogleVR\Shaders\GvrUIOverlayFont.shader" />
      <None Include="Assets\External Assets\LowPolyWater_Pack\Shaders\WaterShaded.shader" />

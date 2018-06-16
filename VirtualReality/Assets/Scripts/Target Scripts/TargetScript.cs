@@ -48,7 +48,7 @@ public abstract class TargetScript : MonoBehaviour, IDamageable
         this.broken = true;
         AnimateDestruction();
     }
-
+    
     IEnumerator MoveToOverTime(Vector3 initialPosition, Vector3 desiredPosition, float secondsToMove)
     {
         // move to a position while looking at the player, in an animated way.

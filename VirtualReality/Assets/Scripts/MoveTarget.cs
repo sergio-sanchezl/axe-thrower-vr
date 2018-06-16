@@ -6,25 +6,28 @@ public class MoveTarget : MonoBehaviour
 {
 
     [SerializeField] private Vector3 center;
-    [SerializeField] private float speed;
-    [SerializeField] private float startAngle;
-    [SerializeField] private float endAngle;
+    [SerializeField] public float speed;
+    [SerializeField] public float startAngle;
+    [SerializeField] public float endAngle;
 
-    [SerializeField] private float secondsMoving;
+    [SerializeField] public float secondsMoving;
     [SerializeField] private float totalAngle;
 
     [SerializeField] private float currentAngle;
     public Vector3 Center { get; set; }
+
     public float Speed { get; set; }
     public float SecondsMoving { get; set; }
-
+    
+    public float StartAngle { get; set; }
+    public float EndAngle { get; set; }
     [SerializeField] private bool movingToTheRight = true;
     // Use this for initialization
     void Start()
     {
-		this.startAngle = 45f;
-		this.endAngle = 45f;
-		this.secondsMoving = 5;
+		// this.startAngle = 45f;
+		// this.endAngle = 45f;
+		// this.secondsMoving = 5;
         this.totalAngle = endAngle + startAngle;
 		this.speed = this.totalAngle / this.secondsMoving;
         this.currentAngle = startAngle;

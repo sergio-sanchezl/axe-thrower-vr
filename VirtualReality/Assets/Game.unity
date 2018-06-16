@@ -18448,6 +18448,8 @@ MonoBehaviour:
   active: 1
   radius: 14.73
   spawnAngle: 180
+  lowerAngle: 0
+  higherAngle: 0
   timeBetweenSpawns: 2
   objectsToSpawn:
   - entity: {fileID: 1780176978351212, guid: 3500bd2619bad8a478bbec84b6017633, type: 2}
@@ -18469,7 +18471,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1580079631}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.41, z: 0}
+  m_LocalPosition: {x: 0, y: 0.01, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
