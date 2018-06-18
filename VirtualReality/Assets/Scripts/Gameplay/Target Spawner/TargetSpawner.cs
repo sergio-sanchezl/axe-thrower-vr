@@ -20,7 +20,7 @@ public class TargetSpawner : MonoBehaviour
     [SerializeField] private float lowerAngle;
     [SerializeField] private float higherAngle;
     // time to wait  until spawning the next entity.
-    public float timeBetweenSpawns;
+    
 
     // entities to spawn. will be randomly picked, for now.
     public EntityWithProbability[] objectsToSpawn;
@@ -39,6 +39,13 @@ public class TargetSpawner : MonoBehaviour
 
     // Reference to the bonusManager. Will be passed to created entities.
     public BonusManager bonusManager;
+
+    public int difficultyFactor = 0; // will go from 0 to 10.
+    public int chanceOfMovingTargets = 0; // will increase by 10 for every level.
+    public float maximumMovingAngle = 0; // will increase by 7 every level.
+    public float movingTargetSpeed = 0;
+    public float timeBetweenSpawns;
+    public float timeUntilTargetDisappears;
     // begin the spawn loop.
     void Start()
     {
@@ -197,6 +204,14 @@ public class TargetSpawner : MonoBehaviour
 
         Gizmos.color = Color.red;
         Gizmos.DrawLine(this.transform.position, worldPos);
+    }
+
+    public void IncreaseDifficulty() {
+        if(difficultyFactor == 10) {
+            return;
+        } else {
+            difficultyFactor++;
+        }
     }
 }
 

@@ -9,7 +9,7 @@ public class AudioController : MonoBehaviour
     public string caption;
     public float captionDuration;
     // Use this for initialization
-    void Start()
+    void Awake()
     {
         this.subtitleManager = GameObject.FindGameObjectWithTag("SubtitleManager").GetComponent<SubtitleManager>();
         // if (audioSource == null)

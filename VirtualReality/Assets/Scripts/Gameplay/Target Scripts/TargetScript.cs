@@ -40,6 +40,8 @@ public abstract class TargetScript : MonoBehaviour, IDamageable
         this.initialPosition = this.transform.position;
         this.desiredPosition = this.initialPosition + new Vector3(0, desiredHeightOffset, 0);
         this.audioController = GetComponent<AudioController>();
+
+        this.audioController.Play();
         StartCoroutine(MoveToOverTime(this.initialPosition, this.desiredPosition, this.secondsToMove));
     }
 
@@ -67,7 +69,7 @@ public abstract class TargetScript : MonoBehaviour, IDamageable
     public void StartUpActions()
     {
         this.hideCoroutine = StartCoroutine(HideAfterTime(timeToHide));
-        this.audioController.Play();
+        // this.audioController.Play();
         MoveTarget moveTarget = GetComponent<MoveTarget>();
         if (moveTarget != null)
         {
@@ -87,6 +89,9 @@ public abstract class TargetScript : MonoBehaviour, IDamageable
 
     public void AnimateDestruction()
     {
+        Material mat = this.targetRigidbody.GetComponent<Renderer>().material;
+        // StandardShaderUtils.ChangeRenderMode(mat, StandardShaderUtils.BlendMode.Transparent);
+        mat.SetFloat("_Alpha", 0.8f);
         if(this.compass != null) {
             this.compass.DeleteTarget(this.gameObject);
         }
