@@ -31,7 +31,7 @@ public class TargetSpawner : MonoBehaviour
     // to the edges of the arc, the enemies will appear at a lower height.
     public float minHeight = 3f;
     // to the center of the arc, the enemies will appear at a higher height.
-    public float maxHeight = 8f;
+    public float maxHeight = 3f;
     // Use this for initialization
 
     // Reference to the scoreManager. Will be passed to created entities.
@@ -40,15 +40,29 @@ public class TargetSpawner : MonoBehaviour
     // Reference to the bonusManager. Will be passed to created entities.
     public BonusManager bonusManager;
 
-    public int difficultyFactor = 0; // will go from 0 to 10.
-    public int chanceOfMovingTargets = 0; // will increase by 10 for every level.
-    public float maximumMovingAngle = 0; // will increase by 7 every level.
-    public float movingTargetSpeed = 0;
-    public float timeBetweenSpawns;
-    public float timeUntilTargetDisappears;
+    public int difficultyFactor = 1; // will go from 1 to 8.
+    public int chanceOfMovingTargets; // will increase by 10 for every level.
+    public int chanceOfMovingTargetsStep;
+    public float maximumMovingAngle; // will increase by 7 every level.
+    public float maximumMovingAngleStep;
+    public float movingTargetSpeed;
+    public float movingTargetSpeedStep;
+    public float timeBetweenSpawns; // will decrement by 0.25f by each level
+    public float timeBetweenSpawnsStep;
+    public float timeUntilTargetDisappears; // will decrement by 0.25f by each level.
+    public float timeUntilTargetDisappearsStep;
+    public float maxRandomHeight;
+    public float maxRandomHeightStep;
+    public float minRandomHeight;
+    public float minRandomHeightStep;
+    public float minAbsoluteHeight;
+    public float baseHeight;
+    public float minTimeBetweenSpawns;
     // begin the spawn loop.
     void Start()
     {
+        this.minRandomHeight = baseHeight;
+        this.maxRandomHeight = baseHeight;
         this.scoreManager = GameObject.FindGameObjectWithTag("ScoreManager").GetComponent<ScoreManager>();
         PrepareProbabilities();
         StartCoroutine(SpawnLoop());
@@ -112,8 +126,9 @@ public class TargetSpawner : MonoBehaviour
         // set the gameobject (entity) position and look at the player.
         spawnedObject.transform.position = worldPos;
         spawnedObject.transform.LookAt(player.transform);
-
-        AttachMoveComponent(spawnedObject, angle);
+        if(ShouldAttachMoveComponent()) {
+            AttachMoveComponent(spawnedObject, angle);
+        }
         // we get the Target Script. we know all entities are targets and so, contain this script.
         TargetScript ts = spawnedObject.GetComponent<TargetScript>();
         if (ts != null)
@@ -127,19 +142,21 @@ public class TargetSpawner : MonoBehaviour
                 ((BonusTarget)ts).bonusManager = this.bonusManager;
             }
 
-            ts.timeToHide = 90f;
+            ts.timeToHide = timeUntilTargetDisappears;
             ts.player = this.player.transform;
-            float halfAngle = (lowerAngle + higherAngle) / 2f;
-            //first sector. lerp from A0 (lower angle) to A1 (higher angle) (A0 -> min height, A1 -> max height);
-            if (angle < halfAngle)
-            {
-                ts.desiredHeightOffset = Mathf.Lerp(minHeight, maxHeight, Mathf.InverseLerp(lowerAngle, halfAngle, angle)); // the height will depend on the angle.
-            }
-            else
-            {
-                // second sector. lerp from A1 (higher angle) to A0 (lower angle).
-                ts.desiredHeightOffset = Mathf.Lerp(maxHeight, minHeight, Mathf.InverseLerp(halfAngle, higherAngle, angle)); // the height will depend on the angle.
-            }
+
+            ts.desiredHeightOffset = GetRandomHeight();
+            // float halfAngle = (lowerAngle + higherAngle) / 2f;
+            // //first sector. lerp from A0 (lower angle) to A1 (higher angle) (A0 -> min height, A1 -> max height);
+            // if (angle < halfAngle)
+            // {
+            //     ts.desiredHeightOffset = Mathf.Lerp(minHeight, maxHeight, Mathf.InverseLerp(lowerAngle, halfAngle, angle)); // the height will depend on the angle.
+            // }
+            // else
+            // {
+            //     // second sector. lerp from A1 (higher angle) to A0 (lower angle).
+            //     ts.desiredHeightOffset = Mathf.Lerp(maxHeight, minHeight, Mathf.InverseLerp(halfAngle, higherAngle, angle)); // the height will depend on the angle.
+            // }
 
         }
     }
@@ -150,7 +167,7 @@ public class TargetSpawner : MonoBehaviour
         // script must be disabled. the target itself will enable it after appearing.
         moveTarget.enabled = false;
 
-        float totalAngle = 90f;
+        float totalAngle = Random.Range(0, maximumMovingAngle);
         float startAngle;
         float endAngle;
         if(angle - lowerAngle < (totalAngle / 2) && higherAngle - angle < (totalAngle / 2)) {
@@ -180,8 +197,8 @@ public class TargetSpawner : MonoBehaviour
         moveTarget.startAngle = startAngle;
         moveTarget.endAngle = endAngle;
 
-        Debug.Log("A: " + angle + " LA: " + lowerAngle + " HA: " + higherAngle + " TA: " + totalAngle + " SA: " + startAngle + " EA: " + endAngle);
-        moveTarget.secondsMoving = 5;
+        // Debug.Log("A: " + angle + " LA: " + lowerAngle + " HA: " + higherAngle + " TA: " + totalAngle + " SA: " + startAngle + " EA: " + endAngle);
+        moveTarget.speed = movingTargetSpeed;
     }
     // we draw the arc and the lines that represent it as gizmos in the editor, for debugging purposes.
     private void OnDrawGizmos()
@@ -206,11 +223,37 @@ public class TargetSpawner : MonoBehaviour
         Gizmos.DrawLine(this.transform.position, worldPos);
     }
 
+    public bool ShouldAttachMoveComponent() {
+        int randomNumber = Random.Range(0,100);
+        return randomNumber <= this.chanceOfMovingTargets;
+    }
+
+    public float GetRandomHeight() {
+        return Random.Range(minRandomHeight, maxRandomHeight);
+    }
     public void IncreaseDifficulty() {
-        if(difficultyFactor == 10) {
+        if(difficultyFactor >= 8) {
+            // stop increasing.
             return;
         } else {
             difficultyFactor++;
+            timeUntilTargetDisappears += timeUntilTargetDisappearsStep;
+            if(timeBetweenSpawns + timeBetweenSpawnsStep <= minTimeBetweenSpawns) {
+                timeBetweenSpawns = minTimeBetweenSpawns;
+            } else {
+                timeBetweenSpawns += timeBetweenSpawnsStep;
+            }
+            
+            chanceOfMovingTargets += chanceOfMovingTargetsStep;
+            maximumMovingAngle += maximumMovingAngleStep;
+            movingTargetSpeed += movingTargetSpeedStep;
+            maxRandomHeight += maxRandomHeightStep;
+            if(minRandomHeight + minRandomHeightStep <= minAbsoluteHeight) {
+                minRandomHeight = minAbsoluteHeight;
+            } else {
+                minRandomHeight += minRandomHeightStep;
+            }
+            Debug.Log("Increased difficulty to " + difficultyFactor);
         }
     }
 }

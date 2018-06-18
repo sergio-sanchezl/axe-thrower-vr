@@ -17,7 +17,7 @@ public class SonarElement : MonoBehaviour {
 	}
 
     public void PlaySound(AudioClip audioClip, float pitch, float volume) {
-        Debug.Log("Play Sound called!");
+        // Debug.Log("Play Sound called!");
         StopSound();
         if (!this.audioSource.isPlaying)
         {

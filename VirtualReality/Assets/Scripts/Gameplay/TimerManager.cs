@@ -21,6 +21,9 @@ public class TimerManager : MonoBehaviour
     public GameObject timerContainer;
     public UnityEngine.Object fadingTextPrefab;
 
+    public int secondsToIncreaseDifficulty = 30;
+
+    [SerializeField] private TargetSpawner targetSpawner;
     [SerializeField] private GameEndManager gameEndManager;
     void Start()
     {
@@ -42,6 +45,9 @@ public class TimerManager : MonoBehaviour
     void AddSecondToTimer()
     {
         this.secondsElapsed += 1;
+        if(secondsElapsed % secondsToIncreaseDifficulty == 0) {
+            targetSpawner.IncreaseDifficulty();
+        }
         UpdateTimer();
     }
 

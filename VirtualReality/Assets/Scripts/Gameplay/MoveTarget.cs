@@ -29,7 +29,7 @@ public class MoveTarget : MonoBehaviour
 		// this.endAngle = 45f;
 		// this.secondsMoving = 5;
         this.totalAngle = endAngle + startAngle;
-		this.speed = this.totalAngle / this.secondsMoving;
+		// this.speed = this.totalAngle / this.secondsMoving;
         this.currentAngle = startAngle;
     }
 

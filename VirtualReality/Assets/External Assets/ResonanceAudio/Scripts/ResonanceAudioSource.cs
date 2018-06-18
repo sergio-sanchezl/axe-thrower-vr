@@ -138,8 +138,8 @@ public class ResonanceAudioSource : MonoBehaviour {
     // Validate the source output mixer route.
     if (ResonanceAudio.MixerGroup == null ||
         audioSource.outputAudioMixerGroup != ResonanceAudio.MixerGroup) {
-      Debug.LogWarning("Make sure AudioSource is routed to a mixer that ResonanceAudioRenderer " +
-                       "is attached to.");
+      // Debug.LogWarning("Make sure AudioSource is routed to a mixer that ResonanceAudioRenderer " +
+                      //  "is attached to.");
     }
   }
 #endif  // UNITY_EDITOR
