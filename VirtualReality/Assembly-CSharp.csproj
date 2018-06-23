@@ -169,10 +169,8 @@
      <Compile Include="Assets\External Assets\ResonanceAudio\Scripts\ResonanceAudioRoom.cs" />
      <Compile Include="Assets\External Assets\ResonanceAudio\Scripts\ResonanceAudioRoomManager.cs" />
      <Compile Include="Assets\External Assets\ResonanceAudio\Scripts\ResonanceAudioSource.cs" />
-     <Compile Include="Assets\Scripts\Accessibility\AccessibilityForUI.cs" />
      <Compile Include="Assets\Scripts\Accessibility\AlternativeText.cs" />
      <Compile Include="Assets\Scripts\Accessibility\AudioController.cs" />
-     <Compile Include="Assets\Scripts\Accessibility\AudioManager.cs" />
      <Compile Include="Assets\Scripts\Accessibility\Colorizer.cs" />
      <Compile Include="Assets\Scripts\Accessibility\ColorizerManager.cs" />
      <Compile Include="Assets\Scripts\Accessibility\Compass.cs" />
@@ -189,6 +187,7 @@
      <Compile Include="Assets\Scripts\Accessibility\NearbySonarElement.cs" />
      <Compile Include="Assets\Scripts\Accessibility\OptionsManager.cs" />
      <Compile Include="Assets\Scripts\Accessibility\PaletteGetter.cs" />
+     <Compile Include="Assets\Scripts\Accessibility\PanelNavigationAccessibility.cs" />
      <Compile Include="Assets\Scripts\Accessibility\PlayerPrefsWiper.cs" />
      <Compile Include="Assets\Scripts\Accessibility\ScoreHolderPositionCalculator.cs" />
      <Compile Include="Assets\Scripts\Accessibility\SonarElement.cs" />
@@ -197,6 +196,7 @@
      <Compile Include="Assets\Scripts\Accessibility\StaticCallsWrapper.cs" />
      <Compile Include="Assets\Scripts\Accessibility\SubtitleManager.cs" />
      <Compile Include="Assets\Scripts\Accessibility\TextAndAltText.cs" />
+     <Compile Include="Assets\Scripts\Gameplay\AudioPlayOnAwakeFix.cs" />
      <Compile Include="Assets\Scripts\Gameplay\BonusManager.cs" />
      <Compile Include="Assets\Scripts\Gameplay\CollisionEmitterToParent.cs" />
      <Compile Include="Assets\Scripts\Gameplay\DestructionScheduler.cs" />
@@ -259,6 +259,7 @@
      <None Include="Assets\External Assets\GoogleVR\Plugins\Android\AndroidManifest-Cardboard.xml" />
      <None Include="Assets\External Assets\ResonanceAudio\Shaders\ResonanceAudioSurfaceMaterial.shader" />
      <None Include="Assets\Audio\readme.txt" />
+     <None Include="Assets\Audio\UI SFX\_readme_and_license.txt" />
  <Reference Include="Vuforia.UnityExtensions.Editor">
  <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/VuforiaSupport/Managed/Editor/Vuforia.UnityExtensions.Editor.dll</HintPath>
  </Reference>

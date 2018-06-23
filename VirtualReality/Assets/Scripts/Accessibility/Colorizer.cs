@@ -19,7 +19,7 @@ public class Colorizer : MonoBehaviour
     [SerializeField] private string secondaryColorField;
 
     public Color PrimaryColor { get { return this.primaryColor; } set { this.primaryColor = value; if (this.materialToColorize != null) { this.materialToColorize.SetColor("_PrimaryColor", primaryColor); } } }
-    public Color SecondaryColor { get { return this.secondaryColor; } set { this.secondaryColor = value; if (this.materialToColorize != null) { this.materialToColorize.SetColor("_PrimaryColor", secondaryColor); } } }
+    public Color SecondaryColor { get { return this.secondaryColor; } set { this.secondaryColor = value; if (this.materialToColorize != null) { this.materialToColorize.SetColor("_SecondaryColor", secondaryColor); } } }
     // Use this for initialization
     void Start()
     {

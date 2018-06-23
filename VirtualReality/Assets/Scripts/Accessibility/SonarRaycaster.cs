@@ -7,8 +7,8 @@ public class SonarRaycaster : MonoBehaviour
 
     [SerializeField] private float distance = 100;
 
-    public GameObject previouslyCollidedGameObject = null;
-    public bool previouslyHittingTarget;
+    // public GameObject previouslyCollidedGameObject = null;
+    // public bool previouslyHittingTarget;
 
     List<GameObjectAndDistance> previouslyCollidedGameObjects = new List<GameObjectAndDistance>();
     // Use this for initialization

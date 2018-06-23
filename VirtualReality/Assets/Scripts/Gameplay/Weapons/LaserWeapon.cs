@@ -56,7 +56,7 @@ public class LaserWeapon : Weapon
                 if (!alreadyDealtDamage.Contains(hitColliders[i].gameObject))
                 {
                     alreadyDealtDamage.Add(hitColliders[i].gameObject);
-                    TargetScript targetScript = hitColliders[i].transform.GetComponentInParent<TargetScript>();
+                    IDamageable targetScript = hitColliders[i].transform.GetComponentInParent<IDamageable>();
                     targetScript.DealDamage(damage);
                 }
 

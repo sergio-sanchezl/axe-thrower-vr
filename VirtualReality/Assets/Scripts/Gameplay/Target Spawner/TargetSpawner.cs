@@ -22,7 +22,7 @@ public class TargetSpawner : MonoBehaviour
     // time to wait  until spawning the next entity.
     
 
-    // entities to spawn. will be randomly picked, for now.
+    // entities to spawn. will be randomly picked according to their probabilities
     public EntityWithProbability[] objectsToSpawn;
 
     // // unused.

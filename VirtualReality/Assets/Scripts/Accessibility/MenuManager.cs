@@ -8,7 +8,7 @@ public class MenuManager : MonoBehaviour
     // Reference to all the panels that can be shown in this canvas.
     public GameObject[] panels;
 
-    AccessibilityForUI[] panelsScripts;
+    PanelNavigationAccessibility[] panelsScripts;
 
     GvrPointerGraphicRaycaster raycaster;
     // Id of the currently displayed panel.
@@ -26,10 +26,10 @@ public class MenuManager : MonoBehaviour
     {
         raycaster = this.transform.GetComponent<GvrPointerGraphicRaycaster>();
         // We fetch the accessibility scripts from each panel.
-        panelsScripts = new AccessibilityForUI[panels.Length];
+        panelsScripts = new PanelNavigationAccessibility[panels.Length];
         for (int i = 0; i < panels.Length; i++)
         {
-            panelsScripts[i] = panels[i].GetComponent<AccessibilityForUI>();
+            panelsScripts[i] = panels[i].GetComponent<PanelNavigationAccessibility>();
         }
         // We set the focus mode to the one that is found in
         // the player preferences. it defaults to FALSE (0) if not
@@ -108,7 +108,7 @@ public class MenuManager : MonoBehaviour
 
     void SetPanelScriptsSweepModeEnabled (bool value) {
         foreach(var panelAccessibility in panelsScripts) {
-            panelAccessibility.SetScanMode(value);
+            panelAccessibility.SetSweepMode(value);
         }
     }
 

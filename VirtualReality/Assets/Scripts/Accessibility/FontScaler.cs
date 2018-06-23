@@ -41,7 +41,10 @@ public class FontScaler : MonoBehaviour
 
     public void Notify()
     {
-        // Debug.Log("Font scaler NOTIFY!" + this.fontScaleManager.GetScale());
+        ChangeTextSize();
+    }
+
+    public void ChangeTextSize() {
         this.text.fontSize = Mathf.RoundToInt(this.fontScaleManager.GetScale() * baseFontSize);
         this.currentSize = this.text.fontSize;
     }
@@ -56,8 +59,7 @@ public class FontScaler : MonoBehaviour
             {
                 this.baseFontSize = text.fontSize;
             }
-            this.text.fontSize = Mathf.RoundToInt(this.fontScaleManager.GetScale() * baseFontSize);
-            this.currentSize = this.text.fontSize;
+            ChangeTextSize();
         }
 
     }

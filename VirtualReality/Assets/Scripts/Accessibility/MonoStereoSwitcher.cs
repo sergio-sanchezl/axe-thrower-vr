@@ -5,7 +5,7 @@ using UnityEngine;
 public class MonoStereoSwitcher : MonoBehaviour {
 
 	public bool stereoActivated = true;
-	void Start () {
+	void Awake () {
 		this.stereoActivated = (PlayerPrefs.GetInt("stereo_mode", 1) == 1);
 		ChangeMonoStereo(this.stereoActivated);
 	}

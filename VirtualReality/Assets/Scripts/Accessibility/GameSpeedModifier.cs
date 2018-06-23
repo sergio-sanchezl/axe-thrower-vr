@@ -6,8 +6,6 @@ public class GameSpeedModifier : MonoBehaviour
 {
     [SerializeField] private float slowTimeScale = 0.5f;
     [SerializeField] private float normalTimeScale = 1.0f;
-
-    [SerializeField] private float timeScale;
     // Use this for initialization
     void Awake()
     {

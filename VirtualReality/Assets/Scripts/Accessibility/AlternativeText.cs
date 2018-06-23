@@ -6,7 +6,7 @@ public class AlternativeText : MonoBehaviour {
 
 	public string altText;
 	
-	public AccessibilityForUI panel;
+	public PanelNavigationAccessibility panel;
 	public int index;
 
 	public void ChangeAltTextAndNotifyPanel(string value) {

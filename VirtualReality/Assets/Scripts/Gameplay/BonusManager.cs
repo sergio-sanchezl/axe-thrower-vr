@@ -126,8 +126,8 @@ public class BonusManager : MonoBehaviour
     }
     public void ExecuteRandomBonus()
     {
-        // 1 inclusive, 7 exclusive: this will yield 1, 2, 3, 4, 5 or 6.
-        int randomNumber = UnityEngine.Random.Range(1, 7);
+        // 1 inclusive, 8 exclusive: this will yield 1, 2, 3, 4, 5, 6 or 7.
+        int randomNumber = UnityEngine.Random.Range(1, 8);
         switch (randomNumber)
         {
             case 1:
@@ -138,7 +138,7 @@ public class BonusManager : MonoBehaviour
                     StopCoroutine(this.quickReloadCoroutine);
                 }
                 // save coroutine reference and execute it.
-                this.quickReloadCoroutine = StartCoroutine(BetterFireRateCoroutine());
+                this.quickReloadCoroutine = StartCoroutine(QuickReloadCoroutine());
                 break;
             case 2:
                 Debug.Log("222 - Double points gain!");
@@ -156,6 +156,7 @@ public class BonusManager : MonoBehaviour
                 AddExtraPoints();
                 break;
             case 4:
+            case 7:
                 Debug.Log("444 - Extra time!");
                 // extra time bonus.
                 AddExtraTime();
@@ -186,7 +187,7 @@ public class BonusManager : MonoBehaviour
         }
     }
 
-    IEnumerator BetterFireRateCoroutine()
+    IEnumerator QuickReloadCoroutine()
     {
         weapon.FireRateMultiplier = 4f;
         this.QuickReloadRemainingSeconds = this.quickReloadDuration;// quickReload

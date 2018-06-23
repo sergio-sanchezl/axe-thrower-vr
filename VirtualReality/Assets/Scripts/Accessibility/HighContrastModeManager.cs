@@ -27,9 +27,9 @@ public class HighContrastModeManager : MonoBehaviour
         float skyboxExposureValue = (value) ? 0f : 1.45f;
         Color directionalLightColor = (value) ? Color.black : Color.white;
 
-		Debug.Log("Before changing the fogColor to " + fogColor.ToString() + ": " + RenderSettings.fogColor.ToString());
+		// Debug.Log("Before changing the fogColor to " + fogColor.ToString() + ": " + RenderSettings.fogColor.ToString());
         RenderSettings.fogColor = fogColor;
-		Debug.Log("After changing the fogColor to " + fogColor.ToString() + ": " + RenderSettings.fogColor.ToString());
+		// Debug.Log("After changing the fogColor to " + fogColor.ToString() + ": " + RenderSettings.fogColor.ToString());
 		// Debug.Log("Before chaging the _Exposure value to " + skyboxExposureValue + ": " + RenderSettings.skybox.GetFloat("_Exposure"));
         RenderSettings.skybox.SetFloat("_Exposure", skyboxExposureValue);
 		// Debug.Log("After chaging the _Exposure value: " + RenderSettings.skybox.GetFloat("_Exposure"));

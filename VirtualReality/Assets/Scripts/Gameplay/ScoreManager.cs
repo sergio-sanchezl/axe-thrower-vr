@@ -20,7 +20,7 @@ public class ScoreManager : MonoBehaviour
     {
         this.points = 0;
 		this.pointsMarker.text = "" + this.points;
-        this.speechEnabled = PlayerPrefs.GetInt("focus_mode", 0) == 1;
+        this.speechEnabled = PlayerPrefs.GetInt("focus_mode", 0) == 1 || PlayerPrefs.GetInt("sweep_mode", 0) == 1;
     }
 
     public void AddPoints(int pointsToAdd)
