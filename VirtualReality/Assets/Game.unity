@@ -1390,7 +1390,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   throwingAxeWeapon: {fileID: 357327369}
   laserWeapon: {fileID: 1105379137}
-  explosive: 1
+  explosive: 0
   usingLaserWeapon: 0
   fireRateMultiplier: 1
 --- !u!1 &189115713 stripped
