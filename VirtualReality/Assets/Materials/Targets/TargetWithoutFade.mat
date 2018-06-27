@@ -6,13 +6,13 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Target2
-  m_Shader: {fileID: 4800000, guid: d9e60a7d40f8b5b4eac01d57a56c8211, type: 3}
+  m_Name: TargetWithoutFade
+  m_Shader: {fileID: 4800000, guid: bb44c4edd1eeb7245aef06d8029e7566, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 3000
+  m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
@@ -75,5 +75,5 @@ Material:
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _PrimaryColor: {r: 0.21140906, g: 0.8602941, b: 0.1581423, a: 1}
+    - _PrimaryColor: {r: 0, g: 0, b: 0, a: 1}
     - _SecondaryColor: {r: 1, g: 1, b: 1, a: 1}

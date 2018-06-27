@@ -256,6 +256,7 @@
      <None Include="Assets\Shaders\ReplaceColorShader.shader" />
      <None Include="Assets\External Assets\GoogleVR\Shaders\GvrUIOverlay.shader" />
      <None Include="Assets\External Assets\GoogleVR\Plugins\Android\proguard-gvr.txt" />
+     <None Include="Assets\Shaders\ReplaceColorShaderWithoutAlpha.shader" />
      <None Include="Assets\External Assets\GoogleVR\Plugins\Android\AndroidManifest-Cardboard.xml" />
      <None Include="Assets\External Assets\ResonanceAudio\Shaders\ResonanceAudioSurfaceMaterial.shader" />
      <None Include="Assets\Audio\readme.txt" />
