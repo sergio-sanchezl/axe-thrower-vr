@@ -3881,6 +3881,47 @@ MonoBehaviour:
   baseFontSize: 0
   text: {fileID: 0}
   currentSize: 0
+--- !u!1 &259405049
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 259405051}
+  - component: {fileID: 259405050}
+  m_Layer: 0
+  m_Name: Sonar Switcher
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &259405050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 259405049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea191f72c22238245882c4efdba826f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sonarActivated: 0
+--- !u!4 &259405051
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 259405049}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -9.653275, y: -1.0165286, z: 18.281673}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 24
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &261384176
 Prefab:
   m_ObjectHideFlags: 0
@@ -7555,6 +7596,7 @@ MonoBehaviour:
   gameAreaManager: {fileID: 95165422}
   longPressDurationManager: {fileID: 2044799538}
   fontScaleManager: {fileID: 519318242}
+  sonarSwitcher: {fileID: 259405050}
   ttsEnabled: 0
   minusOnePointTargetColorDisplay: {fileID: 1034264851}
   onePointTargetColorDisplay: {fileID: 1827346866}
@@ -7576,6 +7618,8 @@ MonoBehaviour:
   longPressAltText: {fileID: 35139818}
   sweepModeDisplay: {fileID: 1096068785}
   sweepModeAltText: {fileID: 1117782140}
+  sonarDisplay: {fileID: 777405120}
+  sonarAltText: {fileID: 1531310748}
 --- !u!4 &492367393
 Transform:
   m_ObjectHideFlags: 0
@@ -25769,7 +25813,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 492367392}
-        m_MethodName: ChangeGameArea
+        m_MethodName: ChangeSonar
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

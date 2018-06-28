@@ -14,6 +14,7 @@ public class OptionsManager : MonoBehaviour
     public GameAreaManager gameAreaManager;
     public LongPressDurationManager longPressDurationManager;
     public FontScaleManager fontScaleManager;
+    public SonarSwitcher sonarSwitcher;
     public bool ttsEnabled;
     public Image minusOnePointTargetColorDisplay;
     public Image onePointTargetColorDisplay;
@@ -44,6 +45,9 @@ public class OptionsManager : MonoBehaviour
     public Text sweepModeDisplay;
     public AlternativeText sweepModeAltText;
 
+    public Text sonarDisplay;
+    public AlternativeText sonarAltText;
+
 
 
     // Use this for initialization
@@ -61,6 +65,7 @@ public class OptionsManager : MonoBehaviour
         UpdateSubtitlesDisplay();
         UpdateFocusModeDisplay();
         UpdateSweepModeDisplay();
+        UpdateSonarDisplay();
     }
 
     public void ReadPhrase(string phrase)
@@ -205,6 +210,30 @@ public class OptionsManager : MonoBehaviour
         }
         ReadPhrase(ttsPhrase);
     }
+
+    public void UpdateSonarDisplay()
+    {
+        string status = (sonarSwitcher.sonarActivated) ? "Activado" : "Desactivado";
+        sonarDisplay.text = status;
+        sonarAltText.ChangeAltTextAndNotifyPanel("Botón: Alternar sónar. Actual: " + status);
+    }
+    public void ChangeSonar()
+    {
+        bool sonar = sonarSwitcher.ToggleSonar();
+        UpdateSonarDisplay();
+        string ttsPhrase;
+        if (sonar)
+        {
+            ttsPhrase = "Se ha activado el sónar";
+        }
+        else
+        {
+            ttsPhrase = "Se ha desactivado el sónar";
+        }
+        ReadPhrase(ttsPhrase);
+    }
+
+
     public void UpdateFocusModeDisplay()
     {
         string status = (this.menuManager.focusMode) ? "Activado" : "No activado";

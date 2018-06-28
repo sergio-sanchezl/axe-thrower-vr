@@ -228,6 +228,7 @@
      <Compile Include="Assets\Scripts\Unused\test.cs" />
      <Compile Include="Assets\Scripts\Unused\VibrateOnTap.cs" />
      <Compile Include="Assets\Scripts\Unused\VibrationToggler.cs" />
+     <Compile Include="Assets\SonarSwitcher.cs" />
      <None Include="Assets\External Assets\LowPolyWater_Pack\LowPoly Island\Credits.txt" />
      <None Include="Assets\External Assets\GoogleVR\Shaders\GvrUIOverlayFont.shader" />
      <None Include="Assets\External Assets\LowPolyWater_Pack\Shaders\WaterShaded.shader" />

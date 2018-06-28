@@ -7,6 +7,7 @@ public class SonarRaycaster : MonoBehaviour
 
     [SerializeField] private float distance = 100;
 
+    [SerializeField] private bool sonarEnabled;
     // public GameObject previouslyCollidedGameObject = null;
     // public bool previouslyHittingTarget;
 
@@ -14,13 +15,16 @@ public class SonarRaycaster : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
+        this.sonarEnabled = PlayerPrefs.GetInt("sonar", 0) == 1;
     }
 
     // Update is called once per frame
     void Update()
     {
-        CastRay();
+        if(sonarEnabled) {
+            CastRay();
+        }
+        
     }
 
     public void CastRay()
