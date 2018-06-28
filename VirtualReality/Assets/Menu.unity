@@ -8008,7 +8008,6 @@ GameObject:
   - component: {fileID: 519234153}
   - component: {fileID: 519234152}
   - component: {fileID: 519234151}
-  - component: {fileID: 519234150}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -8034,20 +8033,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &519234150
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 519234148}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca51ad46bdfc35f44bcd4e522472e24f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  altText: "P\xE1gina 1 de 3"
-  panel: {fileID: 0}
-  index: 0
 --- !u!114 &519234151
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12456,7 +12441,6 @@ GameObject:
   - component: {fileID: 812287885}
   - component: {fileID: 812287884}
   - component: {fileID: 812287883}
-  - component: {fileID: 812287882}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -12482,20 +12466,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &812287882
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 812287880}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca51ad46bdfc35f44bcd4e522472e24f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  altText: "P\xE1gina 2 de 3"
-  panel: {fileID: 0}
-  index: 0
 --- !u!114 &812287883
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13352,6 +13322,7 @@ GameObject:
   m_Component:
   - component: {fileID: 865432608}
   - component: {fileID: 865432609}
+  - component: {fileID: 865432610}
   m_Layer: 5
   m_Name: 1/3
   m_TagString: Label
@@ -13384,6 +13355,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 865432607}
+--- !u!114 &865432610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 865432607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca51ad46bdfc35f44bcd4e522472e24f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  altText: "P\xE1gina 1 de 3"
+  panel: {fileID: 0}
+  index: 0
 --- !u!1 &873820283
 GameObject:
   m_ObjectHideFlags: 0
@@ -15448,10 +15433,11 @@ MonoBehaviour:
     type: 2}
   currentIndex: 0
   interactiveElements:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 543748039}
+  - {fileID: 1917118420}
+  - {fileID: 294491214}
+  - {fileID: 1747932811}
+  - {fileID: 1609542140}
   textToBeRead: []
   highlights: []
   sweepModeActivated: 0
@@ -19899,7 +19885,6 @@ GameObject:
   - component: {fileID: 1252894320}
   - component: {fileID: 1252894319}
   - component: {fileID: 1252894318}
-  - component: {fileID: 1252894317}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -19925,20 +19910,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1252894317
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1252894315}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca51ad46bdfc35f44bcd4e522472e24f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  altText: "P\xE1gina 3 de 3"
-  panel: {fileID: 0}
-  index: 0
 --- !u!114 &1252894318
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20270,6 +20241,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1289525514}
   - component: {fileID: 1289525515}
+  - component: {fileID: 1289525516}
   m_Layer: 5
   m_Name: 2/3
   m_TagString: Label
@@ -20302,6 +20274,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1289525513}
+--- !u!114 &1289525516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1289525513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca51ad46bdfc35f44bcd4e522472e24f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  altText: "P\xE1gina 2 de 3"
+  panel: {fileID: 0}
+  index: 0
 --- !u!1001 &1293057205
 Prefab:
   m_ObjectHideFlags: 0
@@ -28379,6 +28365,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1747932812}
   - component: {fileID: 1747932813}
+  - component: {fileID: 1747932814}
   m_Layer: 5
   m_Name: 3/3
   m_TagString: Label
@@ -28411,6 +28398,20 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1747932811}
+--- !u!114 &1747932814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1747932811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca51ad46bdfc35f44bcd4e522472e24f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  altText: "P\xE1gina 3 de 3"
+  panel: {fileID: 0}
+  index: 0
 --- !u!1001 &1751289490
 Prefab:
   m_ObjectHideFlags: 0
@@ -29612,15 +29613,15 @@ MonoBehaviour:
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 40
+    m_MinSize: 0
+    m_MaxSize: 222
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "C\xF3mo jugar"
+  m_Text: "\xBFC\xF3mo jugar?"
 --- !u!222 &1817242311
 CanvasRenderer:
   m_ObjectHideFlags: 0

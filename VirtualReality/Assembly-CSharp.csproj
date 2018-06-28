@@ -193,6 +193,7 @@
      <Compile Include="Assets\Scripts\Accessibility\SonarElement.cs" />
      <Compile Include="Assets\Scripts\Accessibility\SonarManager.cs" />
      <Compile Include="Assets\Scripts\Accessibility\SonarRaycaster.cs" />
+     <Compile Include="Assets\Scripts\Accessibility\SonarSwitcher.cs" />
      <Compile Include="Assets\Scripts\Accessibility\StaticCallsWrapper.cs" />
      <Compile Include="Assets\Scripts\Accessibility\SubtitleManager.cs" />
      <Compile Include="Assets\Scripts\Accessibility\TextAndAltText.cs" />
@@ -228,7 +229,6 @@
      <Compile Include="Assets\Scripts\Unused\test.cs" />
      <Compile Include="Assets\Scripts\Unused\VibrateOnTap.cs" />
      <Compile Include="Assets\Scripts\Unused\VibrationToggler.cs" />
-     <Compile Include="Assets\SonarSwitcher.cs" />
      <None Include="Assets\External Assets\LowPolyWater_Pack\LowPoly Island\Credits.txt" />
      <None Include="Assets\External Assets\GoogleVR\Shaders\GvrUIOverlayFont.shader" />
      <None Include="Assets\External Assets\LowPolyWater_Pack\Shaders\WaterShaded.shader" />
