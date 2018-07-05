@@ -23,6 +23,11 @@ public class TimerManager : MonoBehaviour
 
     public int secondsToIncreaseDifficulty = 30;
 
+    [SerializeField] private AudioSource sixtySecondsRemaining;
+    [SerializeField] private AudioSource thirtySecondsRemaining;
+
+    [SerializeField] private AudioSource belowTenSecondsRemaining;
+
     [SerializeField] private TargetSpawner targetSpawner;
     [SerializeField] private GameEndManager gameEndManager;
     void Start()
@@ -60,15 +65,20 @@ public class TimerManager : MonoBehaviour
         {
             case 60:
                 // beep for the minute mark!
+                sixtySecondsRemaining.Stop();
+                sixtySecondsRemaining.Play();
                 break;
             case 30:
                 // beep for the half minute mark. uh oh.
+                thirtySecondsRemaining.Stop();
+                thirtySecondsRemaining.Play();
                 break;
             default:
                 // beep for the last ten seconds. UH OH!
                 if (timeDifference <= 10)
                 {
-
+                    belowTenSecondsRemaining.Stop();
+                    belowTenSecondsRemaining.Play();
                 }
                 break;
         }

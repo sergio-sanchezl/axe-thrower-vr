@@ -9,6 +9,7 @@ public class BonusTarget : TargetScript {
     {
         if (!base.broken)
         {
+            base.DealDamage(damage);
             bonusManager.ExecuteRandomBonus();
             this.broken = true;
             AnimateDestruction();

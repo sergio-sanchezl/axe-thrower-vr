@@ -16,6 +16,8 @@ public abstract class Weapon : MonoBehaviour
     public bool explosive;
 
     public float fireRateMultiplier = 1f;
+
+    [SerializeField] private AudioSource cantShootSound;
     void Start()
     {
 		
@@ -24,7 +26,7 @@ public abstract class Weapon : MonoBehaviour
     // Update is called once per frame
     virtual public void Update()
     {
-        if (Input.GetButtonDown("Fire1") || (Input.touchCount > 0))
+        if ((Input.touchCount > 0) && Input.GetTouch(0).phase == TouchPhase.Began)
         {
             if (CanShoot())
             {
@@ -33,6 +35,9 @@ public abstract class Weapon : MonoBehaviour
             }
             else
             {
+                if(cantShootSound != null) {
+                    cantShootSound.Play();
+                }
                 //Debug.Log("Cannot shoot yet...");
             }
         }

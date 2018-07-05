@@ -13,6 +13,7 @@ public class ScoreTarget : TargetScript
     {
         if (!base.broken)
         {
+            base.DealDamage(damage);
             scoreManager.AddPoints(this.scoreYield);
             this.broken = true;
             AnimateDestruction();

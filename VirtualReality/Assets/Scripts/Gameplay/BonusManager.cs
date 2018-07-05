@@ -25,6 +25,13 @@ public class BonusManager : MonoBehaviour
     int extraSeconds = 30;
     int extraPoints = 15;
 
+    [SerializeField] private AudioController pointsSound;
+    [SerializeField] private AudioController extraTimeSound;
+    [SerializeField] private AudioController quickReloadSound;
+    [SerializeField] private AudioController doublePointsSound;
+    [SerializeField] private AudioController explosiveBuffSound;
+    [SerializeField] private AudioController laserBuffSound;
+
     int quickReloadRemainingSeconds = 0;
     int QuickReloadRemainingSeconds
     {
@@ -139,6 +146,7 @@ public class BonusManager : MonoBehaviour
                 }
                 // save coroutine reference and execute it.
                 this.quickReloadCoroutine = StartCoroutine(QuickReloadCoroutine());
+                quickReloadSound.Play();
                 break;
             case 2:
                 Debug.Log("222 - Double points gain!");
@@ -149,17 +157,20 @@ public class BonusManager : MonoBehaviour
                 }
                 // save coroutine reference and execute it.
                 this.doublePointsCoroutine = StartCoroutine(DoublePointsCoroutine());
+                doublePointsSound.Play();
                 break;
             case 3:
                 Debug.Log("333 - Extra points!");
                 // extra points bonus.
                 AddExtraPoints();
+                pointsSound.Play();
                 break;
             case 4:
             case 7:
                 Debug.Log("444 - Extra time!");
                 // extra time bonus.
                 AddExtraTime();
+                extraTimeSound.Play();
                 break;
             case 5:
                 Debug.Log("555 - Explosive weapon!");
@@ -170,6 +181,7 @@ public class BonusManager : MonoBehaviour
                 }
                 // save coroutine reference and execute it.
                 this.explosiveBuffCoroutine = StartCoroutine(ExplosiveWeaponBuffCoroutine());
+                explosiveBuffSound.Play();
                 break;
             case 6:
                 Debug.Log("666 - Laser weapon!");
@@ -180,6 +192,7 @@ public class BonusManager : MonoBehaviour
                 }
                 // save coroutine reference and execute it.
                 this.laserBuffCoroutine = StartCoroutine(LaserWeaponBuffCoroutine());
+                laserBuffSound.Play();
                 break;
             default:
                 // do nothing.

@@ -13,6 +13,7 @@ TagManager:
   - Compass
   - SonarManager
   - FontScaleManager
+  - Target
   layers:
   - Default
   - TransparentFX

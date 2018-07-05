@@ -28,6 +28,10 @@ public abstract class TargetScript : MonoBehaviour, IDamageable
     public float timeToHide = 3f;
 
     Coroutine hideCoroutine;
+
+    [SerializeField] private AudioSource disappearSound;
+
+    [SerializeField] private AudioController impactSound;
     // Use this for initialization
     void Start()
     {
@@ -77,7 +81,9 @@ public abstract class TargetScript : MonoBehaviour, IDamageable
         }
     }
 
-    public abstract void DealDamage(float damage);
+    public virtual void DealDamage(float damage) {
+        impactSound.Play();
+    }
 
     public void DisableColliders()
     {
@@ -89,6 +95,8 @@ public abstract class TargetScript : MonoBehaviour, IDamageable
 
     public void AnimateDestruction()
     {
+        disappearSound.Play();
+
         Material mat = this.targetRigidbody.GetComponent<Renderer>().material;
         // StandardShaderUtils.ChangeRenderMode(mat, StandardShaderUtils.BlendMode.Transparent);
         mat.SetFloat("_Alpha", 0.8f);

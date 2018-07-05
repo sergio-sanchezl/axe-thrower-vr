@@ -11,6 +11,9 @@ public class LaserWeapon : Weapon
     public float explosionDistance;
     public Object explosionPrefab;
     [SerializeField] private GameObject fireParticleEmitter;
+
+    [SerializeField] private AudioSource laserSound;
+
     void Start()
     {
         lr = bulletSpawner.GetComponent<LineRenderer>();
@@ -32,6 +35,7 @@ public class LaserWeapon : Weapon
     override protected void Shoot()
     {
         base.Shoot();
+        laserSound.Play();
         bool somethingHit = false;
         Vector3 sourcePosition = bulletSpawner.transform.position;
         Vector3 hitPosition = Vector3.zero;

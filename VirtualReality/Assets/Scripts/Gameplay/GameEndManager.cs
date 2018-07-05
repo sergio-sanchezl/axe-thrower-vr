@@ -27,6 +27,10 @@ public class GameEndManager : MonoBehaviour
         int time = timerManager.GetSecondsElapsed();
         int recordTime = PlayerPrefs.GetInt("record_time", -1);
         int recordScore = PlayerPrefs.GetInt("record_score", -1);
+        GameObject[] targets = GameObject.FindGameObjectsWithTag("Target");
+        foreach (GameObject target in targets) {
+            Destroy(target);
+        }
         targetSpawner.active = false;
         weapon.SetActive(false);
         compass.SetActive(false);
