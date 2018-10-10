@@ -26,7 +26,7 @@ public abstract class Weapon : MonoBehaviour
     // Update is called once per frame
     virtual public void Update()
     {
-        if ((Input.touchCount > 0) && Input.GetTouch(0).phase == TouchPhase.Began)
+        if (((Input.touchCount > 0) && Input.GetTouch(0).phase == TouchPhase.Began) || Input.GetMouseButtonDown(0) || Input.GetButtonDown("Fire1"))
         {
             if (CanShoot())
             {
